@@ -1,0 +1,13 @@
+.main-head.ecom-navbar {
+  background: var(--primary-color);
+  position: sticky;
+  top: 0px;
+}
+
+.sign-in-button {
+  background: var(--secondary-color);
+}
+
+.badge.ecom-badge {
+  background: var(--grey-color);
+}
