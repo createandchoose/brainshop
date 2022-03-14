@@ -1,52 +1,59 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
-    <header class="main-head ecom-navbar z-index-lg">
-      <nav class="nav-component">
-        <div class="logo-wrapper">
-          <span class="hamburger-icon">
-            <i class="fa fa-bars f-6 p-h-4"></i>
+    <header className="main-head ecom-navbar z-index-lg">
+      <nav className="nav-component">
+        <div className="logo-wrapper">
+          <span className="hamburger-icon">
+            <i className="fa fa-bars f-6 p-h-4"></i>
           </span>
-          <a class="heading-4 t-c-1" href="index.html">
+          <Link to="/" className="heading-4 t-c-1">
             Brain Store
-          </a>
+          </Link>
         </div>
-        <div class="nav-searchBar-container ecom-searchbar">
-          <span class="nav-searchIcon">
-            <i class="fa fa-search f-5 t-c-3"></i>
+        <div className="nav-searchBar-container ecom-searchbar">
+          <span className="nav-searchIcon">
+            <i className="fa fa-search f-5 t-c-3"></i>
           </span>
           <input
             type="text"
-            class="p-v-3 nav-searchBar"
+            className="p-v-3 nav-searchBar"
             placeholder="Search Items..."
           />
         </div>
-        <div class="link-wrapper">
-          <a
-            href="login.html"
-            class="t-c-2 f-5 p-v-3 p-h-8 m-h-3 sign-in-button"
+        <div className="link-wrapper">
+          <Link
+            to="/login"
+            className="t-c-2 f-5 p-v-3 p-h-8 m-h-3 sign-in-button"
           >
-            Sign in
-          </a>
-          <div class="badge-wrapper p-h-4 m-h-3">
-            <span class="badge-icon f-8 m-2">
-              <a href="wishlist.html" class="t-c-1">
-                <i class="fa fa-heart"></i>
-              </a>
+            Sign in{' '}
+          </Link>
+
+          <div className="badge-wrapper p-h-4 m-h-3">
+            <span className="badge-icon f-8 m-2">
+              <Link to="/wishlist" className="t-c-1">
+                <i className="fa fa-heart"></i>
+              </Link>
             </span>
-            <div class="badge centered-row ecom-badge">3</div>
+            <div className="badge centered-row ecom-badge f-bold">3</div>
           </div>
-          <span class="f-7 p-h-1 pointer badge-caption">Wishlist</span>
-          <div class="badge-wrapper p-h-4 m-h-3">
-            <span class="badge-icon f-8 m-2">
-              <a href="cart.html" class="t-c-1">
-                <i class="fa fa-shopping-cart"></i>
-              </a>
+          <Link className="t-c-1" to="/wishlist">
+            <span className="f-7 p-h-1 pointer badge-caption">Wishlist</span>
+          </Link>
+
+          <div className="badge-wrapper p-h-4 m-h-3">
+            <span className="badge-icon f-8 m-2">
+              <Link to="/cart" className="t-c-1">
+                <i className="fa fa-shopping-cart"></i>
+              </Link>
             </span>
-            <div class="badge centered-row ecom-badge">3</div>
+            <div className="badge centered-row ecom-badge">3</div>
           </div>
-          <span class="f-7 p-h-1 pointer badge-caption">Cart</span>
+          <Link className="t-c-1" to="/cart">
+            <span className="f-7 p-h-1 pointer badge-caption">Cart</span>
+          </Link>
         </div>
       </nav>
     </header>

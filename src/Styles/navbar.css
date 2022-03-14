@@ -11,3 +11,10 @@
 .badge.ecom-badge {
   background: var(--grey-color);
 }
+
+.badge.ecom-badge {
+  width: 2rem;
+  height: 2rem;
+  top: -6px;
+  right: -2px;
+}
