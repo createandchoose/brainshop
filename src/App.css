@@ -1,6 +1,7 @@
 @import url('https://cerebrumui.netlify.app/style.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 @import './Styles/navbar.css';
+@import './Styles/homepage.css';
 
 @media screen and (max-width: 600px) {
   .badge-caption {
