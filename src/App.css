@@ -4,6 +4,7 @@
 @import './Styles/homepage.css';
 @import './Styles/listing.css';
 @import './Styles/productItem.css';
+@import './Styles/cart.css';
 
 @media screen and (max-width: 600px) {
   .badge-caption {
@@ -24,5 +25,29 @@
 
   .nav-searchBar-container.ecom-searchbar {
     display: none;
+  }
+
+  .cart__grid-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'card'
+      'summary';
+  }
+
+  .cart__card-container {
+    width: 32rem;
+    flex-direction: column;
+  }
+
+  .cart__order-summary {
+    width: 27rem;
+    max-width: 95%;
+    margin: 0 5rem;
+  }
+
+  .CartItem-controls {
+    position: absolute;
+    bottom: 13.8rem;
+    right: 9rem;
   }
 }
