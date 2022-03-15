@@ -3,7 +3,7 @@
 @import './Styles/navbar.css';
 @import './Styles/homepage.css';
 @import './Styles/listing.css';
-@import './Styles/cartItem.css';
+@import './Styles/productItem.css';
 
 @media screen and (max-width: 600px) {
   .badge-caption {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CartItem(props) {
+export default function ProductItem(props) {
   const {
     image,
     productName,

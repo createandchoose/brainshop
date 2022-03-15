@@ -1,5 +1,5 @@
 import React from 'react';
-import CartItem from '../components/CartItem';
+import ProductItem from '../components/ProductItem';
 import Sidebar from '../components/Sidebar';
 import { useProduct } from '../context/products-context';
 
@@ -13,7 +13,7 @@ export default function Listing() {
       {/* Items */}
       <main class="list__content centered-row p-2">
         {output.map(item => (
-          <CartItem key={item.id} {...item} />
+          <ProductItem key={item.id} {...item} />
         ))}
       </main>
     </div>
