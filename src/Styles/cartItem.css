@@ -1,0 +1,29 @@
+.card-text-overlay.position {
+  top: 0;
+  left: 0;
+}
+
+.top-center {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+}
+
+/* card */
+
+.card-container.ecom__card-container {
+  width: 27rem;
+  max-width: 95%;
+}
+
+.card-dismiss-icon.card-heart-icon {
+  top: 5px;
+  left: 0;
+  text-align: justify;
+  width: 4rem;
+}
+
+.card-image.list__card-image {
+  max-width: 100%;
+  height: auto;
+}
