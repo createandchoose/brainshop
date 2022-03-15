@@ -50,4 +50,8 @@
     bottom: 13.8rem;
     right: 9rem;
   }
+
+  .cart__order-summary {
+    position: static;
+  }
 }

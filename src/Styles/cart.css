@@ -12,6 +12,9 @@
 
 .cart__order-summary {
   grid-area: summary;
+  position: fixed;
+  top: 1;
+  right: 0;
 }
 
 .cart__card-container {
@@ -19,7 +22,7 @@
   max-width: 95%;
   display: flex;
   background: var(--secondary-color);
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 
 .cart__img-div {

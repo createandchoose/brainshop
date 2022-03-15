@@ -24,8 +24,8 @@ export default function CartItem() {
           <button className="CartItem-addOne">+</button>
         </div>
         <div class="call-to-action cart__buttons-div">
-          <button class="btn btn-danger t-c-1">Buy Now</button>
-          <button class="btn outline-danger t-c-2">Move to wishlist</button>
+          <button class="btn btn-danger t-c-1">Move to wishlist</button>
+          <button class="btn outline-danger t-c-2">Remove from cart</button>
         </div>
       </div>
     </section>

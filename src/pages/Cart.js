@@ -11,6 +11,9 @@ export default function Cart() {
         </p>
 
         <CartItem />
+        <CartItem />
+        <CartItem />
+        <CartItem />
       </div>
 
       {/* <!-- item-summart --> */}
