@@ -34,7 +34,7 @@ function Home() {
 
           <Category
             imageLink="https://ih1.redbubble.net/image.440168075.0092/ssrco,mhoodie,mens,fafafa:ca443f4786,front,square_product,x600-bg,f8f8f8.1u4.jpg"
-            alt="hoodies"
+            alt="hoodiesss"
             title="Hoodies"
           />
 
