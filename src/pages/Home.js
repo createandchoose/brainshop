@@ -18,7 +18,7 @@ function Home() {
       <section className="categories">
         <header className="categories-head z-index-lg">
           <h3 className="heading-2 t-c-3 f-bold p-h-4">Categories</h3>
-          <Link to="/" className="heading-3 t-c-2 f-bold p-h-4 see-all">
+          <Link to="/listing" className="heading-3 t-c-2 f-bold p-h-4 see-all">
             See All
             <span>
               <i className="fa fa-arrow-right p-h-3"></i>

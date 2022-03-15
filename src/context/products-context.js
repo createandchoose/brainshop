@@ -5,6 +5,7 @@ const productContext = React.createContext();
 const useProduct = () => React.useContext(productContext);
 
 const ProductProvider = ({ children }) => {
+  const [output, setOutput] = useState([]);
   useEffect(() => {
     (async () => {
       try {
@@ -16,7 +17,6 @@ const ProductProvider = ({ children }) => {
       }
     })();
   }, []);
-  const [output, setOutput] = useState([]);
   console.log('output Array', output);
   return (
     <productContext.Provider value={{ output }}>
