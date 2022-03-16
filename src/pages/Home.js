@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <section className="hero">
-        <img class="hero-img" src={YourSvg} />
+        <img className="hero-img" src={YourSvg} />
 
         <h1 className="heading-3 center-text">
           Best place to get

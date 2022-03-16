@@ -2,9 +2,23 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 @import './Styles/navbar.css';
 @import './Styles/homepage.css';
+@import './Styles/listing.css';
+@import './Styles/productItem.css';
 
 @media screen and (max-width: 600px) {
   .badge-caption {
+    display: none;
+  }
+
+  .list__grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 10vh auto;
+    grid-template-areas:
+      'header'
+      'content';
+  }
+
+  .list__aside {
     display: none;
   }
 
