@@ -1,7 +1,10 @@
 import React from 'react';
+import { useCart } from '../context/cart-context';
 
-export default function ProductItem(props) {
+export default function ProductItem({ item }) {
+  const { dispatch } = useCart();
   const {
+    id,
     image,
     productName,
     name,
@@ -11,7 +14,8 @@ export default function ProductItem(props) {
     rating,
     seller,
     newRelease,
-  } = props;
+  } = item;
+
   return (
     <article className="card-container m-4 ecom__card-container">
       <figure className="card-image-container">
@@ -46,18 +50,26 @@ export default function ProductItem(props) {
           <p className="f-7 t-c-2 f-bold"> 3 days minimum </p>
         )}
 
-        <div class="read-only-wrapper top-center flex">
+        <div className="read-only-wrapper top-center flex">
           <span className="f-8 p-h-2">{rating}</span>
-          <div class="read-only-rating p-4"></div>
+          <div className="read-only-rating p-4"></div>
           <span className="f-8 p-h-2">Rating</span>
+          <span className="f-bold t-c-3">Sold By : ({seller})</span>
         </div>
       </main>
       <div className="call-to-action">
         <button className="btn btn-danger m-h-3 t-c-1">Buy Now</button>
-        <button className="btn outline-danger m-h-3 t-c-2">Add to cart</button>
+        <button
+          onClick={() => dispatch({ type: 'ADD_TO_CART', payload: item })}
+          className="btn outline-danger m-h-3 t-c-2"
+        >
+          Add to cart
+        </button>
       </div>
       {newRelease && (
-        <span class="card-badge special-badge f-5 p-3 t-c-1">New Release</span>
+        <span className="card-badge special-badge f-5 p-3 t-c-1">
+          New Release
+        </span>
       )}
       <span
         className={`card-badge card-dismiss-icon ${
