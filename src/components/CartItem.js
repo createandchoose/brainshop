@@ -1,7 +1,9 @@
 import React from 'react';
+import { useCart } from '../context/cart-context';
 
 export default function CartItem({ item }) {
   const { image, productName, name, price, seller, count } = item;
+  const { dispatch } = useCart();
   return (
     <section class="cart__card-container box-shadow-right">
       <div class="cart__img-div">
@@ -18,9 +20,21 @@ export default function CartItem({ item }) {
         </p>
         <p className="f-8 f-bold">Quantity: </p>
         <div className="CartItem-controls">
-          <button className="CartItem-removeOne">&ndash;</button>
+          <button
+            onClick={() =>
+              dispatch({ type: 'REMOVE_FROM_CART', payload: item })
+            }
+            className="CartItem-removeOne"
+          >
+            &ndash;
+          </button>
           <span className="CartItem-count">{count}</span>
-          <button className="CartItem-addOne">+</button>
+          <button
+            onClick={() => dispatch({ type: 'ADD_TO_CART', payload: item })}
+            className="CartItem-addOne"
+          >
+            +
+          </button>
         </div>
         <div class="call-to-action cart__buttons-div">
           <button class="btn btn-danger t-c-1">Move to wishlist</button>

@@ -45,12 +45,6 @@
     margin: 0 5rem;
   }
 
-  .CartItem-controls {
-    position: absolute;
-    bottom: 13.8rem;
-    right: 9rem;
-  }
-
   .cart__order-summary {
     position: static;
   }

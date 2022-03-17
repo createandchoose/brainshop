@@ -2,14 +2,14 @@ import React from 'react';
 import { useCart } from '../context/cart-context';
 
 export default function CartSummary() {
-  const { state } = useCart();
+  const { cartData, state } = useCart();
   return (
     <section class="cart__order-summary m-v-8">
       <main class="cart__sumary-content p-8">
         <header class="heading-4">Price Details</header>
         <hr />
         <div class="order-data">
-          <p class="f-6">Price({state.cartItems} items)</p>
+          <p class="f-6">Price({cartData.length} items)</p>
           <p class="f-6">Rs. {state.totalPrice}</p>
         </div>
         <div class="order-data">
