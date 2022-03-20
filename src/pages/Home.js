@@ -2,8 +2,10 @@ import React from 'react';
 import YourSvg from '../assets/hero.svg';
 import Category from '../components/Category';
 import { Link } from 'react-router-dom';
+import { useProduct } from '../context/products-context';
 
 function Home() {
+  const { categories } = useProduct();
   return (
     <>
       <section className="hero">
@@ -26,35 +28,9 @@ function Home() {
           </Link>
         </header>
         <main className="category-container">
-          <Category
-            imageLink="https://ih1.redbubble.net/image.493083052.7417/sn,x1000-pad,1000x1000,f8f8f8.u1.jpg"
-            alt="books"
-            title="Books"
-          />
-
-          <Category
-            imageLink="https://ih1.redbubble.net/image.440168075.0092/ssrco,mhoodie,mens,fafafa:ca443f4786,front,square_product,x600-bg,f8f8f8.1u4.jpg"
-            alt="hoodies"
-            title="Hoodies"
-          />
-
-          <Category
-            imageLink="https://ih1.redbubble.net/image.520904037.1781/st,small,507x507-pad,600x600,f8f8f8.u1.jpg"
-            alt="Stickers"
-            title="Stickers"
-          />
-
-          <Category
-            imageLink="https://ih1.redbubble.net/image.892503035.9604/st,small,507x507-pad,600x600,f8f8f8.jpg"
-            alt="Art"
-            title="Art"
-          />
-
-          <Category
-            imageLink="https://ih1.redbubble.net/image.1341023847.2843/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.u2.jpg"
-            alt="T-shirt"
-            title="T-shirt"
-          />
+          {categories.map(item => (
+            <Category key={item.id} {...item} />
+          ))}
         </main>
       </section>
     </>

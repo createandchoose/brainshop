@@ -3,7 +3,7 @@ import { useCart } from '../context/cart-context';
 
 export default function CartItem({ item }) {
   const { image, productName, name, price, seller, count } = item;
-  const { state, dispatch } = useCart();
+  const { dispatch } = useCart();
   return (
     <section class="cart__card-container box-shadow-right">
       <div class="cart__img-div">

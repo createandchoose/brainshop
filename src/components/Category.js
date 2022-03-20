@@ -1,14 +1,15 @@
 import React from 'react';
 
-export default function Category({ imageLink, title, alt }) {
+export default function Category(props) {
+  const { imageLink, categoryName, altText } = props;
   return (
     <div className="category-wrapper m-4">
       <img
         src={imageLink}
-        alt={alt}
+        alt={altText}
         className="img-responsive category-image"
       />
-      <p className="f-8 t-c-1 category-text center-text">{title}</p>
+      <p className="f-8 t-c-1 category-text center-text">{categoryName}</p>
     </div>
   );
 }

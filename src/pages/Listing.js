@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductItem from '../components/ProductItem';
 import Sidebar from '../components/Sidebar';
 import { useProduct } from '../context/products-context';
 
 export default function Listing() {
-  const { output } = useProduct();
-  return (
-    <div className="list__grid-container">
-      {/* SideBar */}
-      <Sidebar />
+  const { products, loading } = useProduct();
 
-      {/* Items */}
-      <main className="list__content centered-row p-2">
-        {output.map(item => (
-          <ProductItem key={item.id} item={item} />
-        ))}
-      </main>
-    </div>
+  return (
+    <>
+      {loading && <div className="loader loader-center" id="loader"></div>}
+
+      <div className="list__grid-container">
+        {/* SideBar */}
+        <Sidebar />
+
+        {/* Items */}
+        <main className="list__content centered-row p-2">
+          {products.map(item => (
+            <ProductItem key={item.id} item={item} />
+          ))}
+        </main>
+      </div>
+    </>
   );
 }

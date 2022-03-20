@@ -5,6 +5,7 @@
 @import './Styles/listing.css';
 @import './Styles/productItem.css';
 @import './Styles/cart.css';
+@import './Styles/loader.css';
 
 @media screen and (max-width: 600px) {
   .badge-caption {
