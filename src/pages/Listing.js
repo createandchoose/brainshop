@@ -11,9 +11,9 @@ export default function Listing() {
       <Sidebar />
 
       {/* Items */}
-      <main class="list__content centered-row p-2">
+      <main className="list__content centered-row p-2">
         {output.map(item => (
-          <ProductItem key={item.id} {...item} />
+          <ProductItem key={item.id} item={item} />
         ))}
       </main>
     </div>

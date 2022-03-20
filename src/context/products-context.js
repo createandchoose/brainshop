@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import axios from 'axios';
 
-const productContext = React.createContext();
-const useProduct = () => React.useContext(productContext);
+const productContext = createContext();
+const useProduct = () => useContext(productContext);
 
 const ProductProvider = ({ children }) => {
   const [output, setOutput] = useState([]);
@@ -17,7 +17,7 @@ const ProductProvider = ({ children }) => {
       }
     })();
   }, []);
-  console.log('output Array', output);
+
   return (
     <productContext.Provider value={{ output }}>
       {children}
