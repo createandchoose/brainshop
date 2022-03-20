@@ -6,9 +6,8 @@ const cartReducer = (state, action) => {
         ...state,
         cart: [...state.cart, action.payload],
         cartItems: !existingItem ? state.cartItems + 1 : state.cartItems,
-        totalPrice: state.totalPrice + action.payload.price,
       };
-    case 'REMOVE_FROM_CART':
+    case 'DECREASE_COUNT':
       let index = state.cart.findIndex(i => i.id === action.payload.id); // the index where item is more than 1
       const copy = [...state.cart];
       copy.splice(index, 1);
@@ -16,8 +15,15 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: copy,
-        totalPrice: state.totalPrice - action.payload.price,
       };
+
+    case 'REMOVE_FROM_CART':
+      const filteredData = state.cart.filter(i => i.id !== action.payload.id);
+      return {
+        ...state,
+        cart: filteredData,
+      };
+
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import { useCart } from '../context/cart-context';
 
 export default function CartItem({ item }) {
   const { image, productName, name, price, seller, count } = item;
-  const { dispatch } = useCart();
+  const { state, dispatch } = useCart();
   return (
     <section class="cart__card-container box-shadow-right">
       <div class="cart__img-div">
@@ -21,10 +21,9 @@ export default function CartItem({ item }) {
         <p className="f-8 f-bold">Quantity: </p>
         <div className="CartItem-controls">
           <button
-            onClick={() =>
-              dispatch({ type: 'REMOVE_FROM_CART', payload: item })
-            }
+            onClick={() => dispatch({ type: 'DECREASE_COUNT', payload: item })}
             className="CartItem-removeOne"
+            disabled={count > 1 ? false : true}
           >
             &ndash;
           </button>
@@ -38,7 +37,14 @@ export default function CartItem({ item }) {
         </div>
         <div class="call-to-action cart__buttons-div">
           <button class="btn btn-danger t-c-1">Move to wishlist</button>
-          <button class="btn outline-danger t-c-2">Remove from cart</button>
+          <button
+            onClick={() =>
+              dispatch({ type: 'REMOVE_FROM_CART', payload: item })
+            }
+            class="btn outline-danger t-c-2"
+          >
+            Remove from cart
+          </button>
         </div>
       </div>
     </section>
