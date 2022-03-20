@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '../context/cart-context';
 
 export default function CartSummary() {
-  const { cartData, state } = useCart();
+  const { cartData } = useCart();
 
   const cartTotalPrice = cartData.reduce(
     (total, item) => parseInt(total + item.price * item.count),
