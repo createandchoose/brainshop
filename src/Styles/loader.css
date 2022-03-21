@@ -1,15 +1,15 @@
 /* loader */
 .loader {
-  border: 10px solid #f3f3f3; /* Light grey */
-  border-top: 10px solid #333; /* Blue */
+  border: 8px solid var(--secondary-color); /* Light grey */
+  border-top: 8px solid var(--primary-color); /* Blue */
   border-radius: 50%;
-  width: 9rem;
-  height: 9rem;
+  width: 3rem;
+  height: 3rem;
   animation: spin 2s linear infinite;
 }
 
 .loader-center {
-  margin: 25rem auto;
+  margin: 0 auto;
 }
 
 @keyframes spin {

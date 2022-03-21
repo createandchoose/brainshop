@@ -7,8 +7,6 @@ export default function Listing() {
 
   return (
     <>
-      {loading && <div className="loader loader-center" id="loader"></div>}
-
       <div className="list__grid-container">
         {/* SideBar */}
         <Sidebar />

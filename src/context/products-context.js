@@ -26,7 +26,7 @@ const ProductProvider = ({ children }) => {
       try {
         const res = await axios.get('/api/products');
         setProducts(res.data.products);
-        setLoading(!loading);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }

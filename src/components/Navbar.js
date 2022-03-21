@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from 'context/cart-context';
 function Navbar() {
-  const { cartData } = useCart();
+  const { state } = useCart();
   return (
     <header className="main-head ecom-navbar z-index-lg">
       <nav className="nav-component">
@@ -51,7 +51,7 @@ function Navbar() {
               </Link>
             </span>
             <div className="badge centered-row ecom-badge">
-              {cartData.length}
+              {state.cartItems}
             </div>
           </div>
           <Link className="t-c-1" to="/cart">
