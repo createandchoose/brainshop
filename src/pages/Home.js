@@ -1,8 +1,8 @@
 import React from 'react';
-import YourSvg from '../assets/hero.svg';
-import Category from '../components/Category';
+import YourSvg from 'assets/hero.svg';
+import Category from 'components/Category';
 import { Link } from 'react-router-dom';
-import { useProduct } from '../context/products-context';
+import { useProduct } from 'context/products-context';
 
 function Home() {
   const { categories } = useProduct();
