@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useCart } from 'context/cart-context';
 import { Loader } from 'components';
 import { useAddToCart } from 'custom-hooks/useAddToCart';
-
+import { useNavigate } from 'react-router-dom';
 function ProductItem({ item }) {
+  let navigate = useNavigate();
   const { state, dispatch } = useCart();
   const [loader, setLoader] = useState(false);
   const {
@@ -64,7 +65,10 @@ function ProductItem({ item }) {
       </main>
       <div className="call-to-action">
         {state.cart.find(item => item.id === id) ? (
-          <button className="btn outline-danger m-h-3 t-c-2 w-100">
+          <button
+            onClick={() => navigate('/cart')}
+            className="btn outline-danger m-h-3 t-c-2 w-100"
+          >
             Go to cart
           </button>
         ) : (

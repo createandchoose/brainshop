@@ -17,6 +17,7 @@ function CartItem({ item }) {
             Rs. {parseInt(price) + 200}
           </span>
           <span className="t-c-3 f-bold m-h-1">(30% OFF)</span>
+          <p className="f-bold t-c-3">Sold By : ({seller})</p>
         </p>
         <p className="f-8 f-bold">Quantity: </p>
         <div className="CartItem-controls">
@@ -29,7 +30,12 @@ function CartItem({ item }) {
           </button>
           <span className="CartItem-count">{count}</span>
           <button
-            onClick={() => dispatch({ type: 'ADD_TO_CART', payload: item })}
+            onClick={() =>
+              dispatch({
+                type: 'INCREASE_ITEM_COUNT',
+                payload: item,
+              })
+            }
             className="CartItem-addOne"
           >
             +

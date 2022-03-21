@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CartItem, EmptyCart } from 'components';
+import { CartItem, EmptyCart, CartSummary } from 'components';
 
 import { useCart } from 'context/cart-context';
 
@@ -21,7 +21,7 @@ export default function Cart() {
               <CartItem key={item.id} item={item} />
             ))}
           </div>
-          {/* <CartSummary /> */}
+          <CartSummary />
         </div>
       )}
     </>

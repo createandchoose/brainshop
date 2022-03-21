@@ -2,9 +2,9 @@ import React from 'react';
 import { useCart } from 'context/cart-context';
 
 function CartSummary() {
-  const { cartData } = useCart();
+  const { state } = useCart();
 
-  const cartTotalPrice = cartData.reduce(
+  const cartTotalPrice = state.cart.reduce(
     (total, item) => parseInt(total + item.price * item.count),
     0
   );
@@ -15,7 +15,7 @@ function CartSummary() {
         <header class="heading-4">Price Details</header>
         <hr />
         <div class="order-data">
-          <p class="f-6">Price({cartData.length} items)</p>
+          <p class="f-6">Price({state.cart.length} items)</p>
           <p class="f-6">Rs. {cartTotalPrice}</p>
         </div>
         <div class="order-data">
