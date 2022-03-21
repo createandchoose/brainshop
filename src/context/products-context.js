@@ -7,6 +7,13 @@ const useProduct = () => useContext(productContext);
 const ProductProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const contextValue = {
+    categories,
+    products,
+    loading,
+  };
 
   useEffect(() => {
     (async () => {
@@ -19,8 +26,21 @@ const ProductProvider = ({ children }) => {
     })();
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get('/api/products');
+        setProducts(res.data.products);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
   return (
-    <productContext.Provider value={{ products, categories, setProducts }}>
+    <productContext.Provider value={contextValue}>
       {children}
     </productContext.Provider>
   );
