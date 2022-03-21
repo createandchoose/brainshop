@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ProductItem from '../components/ProductItem';
-import Sidebar from '../components/Sidebar';
-import { useProduct } from '../context/products-context';
+import ProductItem from 'components/ProductItem';
+import Sidebar from 'components/Sidebar';
+import { useProduct } from 'context/products-context';
 
 export default function Listing() {
   const { products, loading } = useProduct();

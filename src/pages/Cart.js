@@ -1,8 +1,8 @@
 import React from 'react';
-import CartItem from '../components/CartItem';
-import CartSummary from '../components/CartSummary';
-import EmptyCart from '../components/EmptyCart';
-import { useCart } from '../context/cart-context';
+import CartItem from 'components/CartItem';
+import CartSummary from 'components/CartSummary';
+import EmptyCart from 'components/EmptyCart';
+import { useCart } from 'context/cart-context';
 
 export default function Cart() {
   const { cartData, state } = useCart();

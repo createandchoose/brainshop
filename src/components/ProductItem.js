@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCart } from '../context/cart-context';
+import { useCart } from 'context/cart-context';
 
 export default function ProductItem({ item }) {
   const { dispatch } = useCart();

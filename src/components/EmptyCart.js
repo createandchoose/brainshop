@@ -1,5 +1,5 @@
 import React from 'react';
-import CartSvg from '../assets/emptyCart.svg';
+import CartSvg from 'assets/emptyCart.svg';
 export default function EmptyCart() {
   return (
     <section className="hero">
