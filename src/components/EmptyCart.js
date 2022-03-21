@@ -1,6 +1,6 @@
 import React from 'react';
 import CartSvg from 'assets/emptyCart.svg';
-export default function EmptyCart() {
+function EmptyCart() {
   return (
     <section className="hero">
       <img className="hero-img" src={CartSvg} />
@@ -12,3 +12,5 @@ export default function EmptyCart() {
     </section>
   );
 }
+
+export { EmptyCart };

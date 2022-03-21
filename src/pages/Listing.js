@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import ProductItem from 'components/ProductItem';
-import Sidebar from 'components/Sidebar';
+import React from 'react';
+import { ProductItem, Sidebar } from 'components';
 import { useProduct } from 'context/products-context';
 
 export default function Listing() {

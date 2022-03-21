@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCart } from 'context/cart-context';
 
-export default function CartSummary() {
+function CartSummary() {
   const { cartData } = useCart();
 
   const cartTotalPrice = cartData.reduce(
@@ -38,3 +38,5 @@ export default function CartSummary() {
     </section>
   );
 }
+
+export { CartSummary };

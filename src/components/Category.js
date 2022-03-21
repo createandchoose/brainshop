@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Category(props) {
+function Category(props) {
   const { imageLink, categoryName, altText } = props;
   return (
     <div className="category-wrapper m-4">
@@ -13,3 +13,5 @@ export default function Category(props) {
     </div>
   );
 }
+
+export { Category };

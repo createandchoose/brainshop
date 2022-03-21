@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCart } from 'context/cart-context';
 
-export default function ProductItem({ item }) {
+function ProductItem({ item }) {
   const { dispatch } = useCart();
   const {
     id,
@@ -81,3 +81,5 @@ export default function ProductItem({ item }) {
     </article>
   );
 }
+
+export { ProductItem };

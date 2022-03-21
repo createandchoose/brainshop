@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCart } from 'context/cart-context';
 
-export default function CartItem({ item }) {
+function CartItem({ item }) {
   const { image, productName, name, price, seller, count } = item;
   const { dispatch } = useCart();
   return (
@@ -50,3 +50,5 @@ export default function CartItem({ item }) {
     </section>
   );
 }
+
+export { CartItem };

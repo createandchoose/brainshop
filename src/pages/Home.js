@@ -1,6 +1,6 @@
 import React from 'react';
 import YourSvg from 'assets/hero.svg';
-import Category from 'components/Category';
+import { Category } from 'components';
 import { Link } from 'react-router-dom';
 import { useProduct } from 'context/products-context';
 

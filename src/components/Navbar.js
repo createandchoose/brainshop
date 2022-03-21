@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from 'context/cart-context';
-export default function Navbar() {
+function Navbar() {
   const { cartData } = useCart();
   return (
     <header className="main-head ecom-navbar z-index-lg">
@@ -62,3 +62,5 @@ export default function Navbar() {
     </header>
   );
 }
+
+export { Navbar };
