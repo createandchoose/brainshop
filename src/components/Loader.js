@@ -1,5 +1,8 @@
 function Loader() {
-  return <div className="loader loader-center" id="loader"></div>;
+  return <div className="loader loader-center"></div>;
 }
 
-export { Loader };
+function BigLoader() {
+  return <div className="loader big-loader  position-loader"></div>;
+}
+export { Loader, BigLoader };

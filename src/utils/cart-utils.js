@@ -10,7 +10,6 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: state.cart.map(item => {
-          console.log(item.count);
           return item.id === action.payload.id
             ? { ...item, count: item.count + 1 }
             : item;
