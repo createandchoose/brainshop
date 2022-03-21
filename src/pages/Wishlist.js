@@ -1,5 +1,15 @@
-import React from 'react';
+import { useCart } from 'context/cart-context';
+import { EmptyCart } from 'components';
 
 export default function Wishlist() {
-  return <div>Wishlist</div>;
+  const { state } = useCart();
+  return (
+    <>
+      {state.wishlist.length === 0 ? (
+        <EmptyCart>wishlist</EmptyCart>
+      ) : (
+        <div></div>
+      )}
+    </>
+  );
 }

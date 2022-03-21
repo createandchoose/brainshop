@@ -9,7 +9,7 @@ export default function Cart() {
   return (
     <>
       {state.cart.length === 0 ? (
-        <EmptyCart />
+        <EmptyCart>cart</EmptyCart>
       ) : (
         <div class="cart__grid-container">
           <div class="cart__cards m-v-8">

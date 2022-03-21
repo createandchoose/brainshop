@@ -6,15 +6,12 @@ const useCart = () => useContext(cartContext);
 
 const initialState = {
   cart: [],
-  cartItems: 0,
-  totalPrice: 0,
+  wishlist: [],
 };
 
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  console.log(state.cart, 'cart');
-  // let cartData = displayCart(state, state.cart);
-
+  console.log(state.wishlist);
   const ContextValues = {
     state,
     dispatch,

@@ -51,7 +51,7 @@ function Navbar() {
               </Link>
             </span>
             <div className="badge centered-row ecom-badge">
-              {state.cartItems}
+              {state.cart.length}
             </div>
           </div>
           <Link className="t-c-1" to="/cart">

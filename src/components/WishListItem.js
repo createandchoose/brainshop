@@ -1,27 +1,6 @@
-import React, { useState } from 'react';
-import { useCart } from 'context/cart-context';
-import { Loader } from 'components';
-import { useAddToCart } from 'custom-hooks/useAddToCart';
-import { useNavigate } from 'react-router-dom';
-function ProductItem({ item }) {
-  let navigate = useNavigate();
-  const { state, dispatch } = useCart();
-  const [loader, setLoader] = useState(false);
-  const {
-    id,
-    image,
-    productName,
-    name,
-    price,
-    inStock,
-    fastDelivery,
-    rating,
-    seller,
-    newRelease,
-  } = item;
+import React from 'react';
 
-  const addCartItem = () => useAddToCart(item, dispatch, setLoader);
-
+function WishListItem() {
   return (
     <article className="card-container m-4 ecom__card-container">
       <figure className="card-image-container">
@@ -90,13 +69,10 @@ function ProductItem({ item }) {
           newRelease && 'card-heart-icon'
         }`}
       >
-        <i
-          onClick={() => dispatch({ type: 'ADD_TO_WISHLIST', payload: item })}
-          className="far fa-heart f-8 p-4"
-        ></i>
+        <i className="far fa-times f-8 p-4"></i>
       </span>
     </article>
   );
 }
 
-export { ProductItem };
+export { WishListItem };
