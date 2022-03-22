@@ -4,7 +4,6 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: [...state.cart, { ...action.payload, count: 1 }],
-        cartItems: state.cartItems + 1,
       };
     case 'INCREASE_ITEM_COUNT': {
       return {
@@ -31,7 +30,6 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: filteredData,
-        cartItems: state.cartItems - 1,
       };
 
     case 'ADD_TO_WISHLIST':
@@ -39,6 +37,16 @@ const cartReducer = (state, action) => {
         ...state,
         wishlist: [...state.wishlist, action.payload],
       };
+
+    case 'REMOVE_FROM_WISHLIST':
+      const wishlistFilteredData = state.wishlist.filter(
+        i => i.id !== action.payload.id
+      );
+      return {
+        ...state,
+        wishlist: wishlistFilteredData,
+      };
+
     default:
       return state;
   }

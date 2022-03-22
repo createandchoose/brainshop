@@ -38,7 +38,9 @@ function Navbar() {
                 <i className="fa fa-heart"></i>
               </Link>
             </span>
-            <div className="badge centered-row ecom-badge f-bold">3</div>
+            <div className="badge centered-row ecom-badge f-bold">
+              {state.wishlist.length}
+            </div>
           </div>
           <Link className="t-c-1" to="/wishlist">
             <span className="f-7 p-h-1 pointer badge-caption">Wishlist</span>

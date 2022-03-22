@@ -9,14 +9,16 @@ export default function Wishlist() {
       {state.wishlist.length === 0 ? (
         <EmptyCart>wishlist</EmptyCart>
       ) : (
-        <div className="wishlist_container">
+        <>
           <p class="heading-3 center-text">
-            My Cart <span class="f-8">({state.wishlist.length})</span>
+            My Wishlist <span class="f-8">({state.wishlist.length})</span>
           </p>
-          {state.wishlist.map(item => (
-            <WishListItem key={item.id} item={item} />
-          ))}
-        </div>
+          <div className="wishlist_container">
+            {state.wishlist.map(item => (
+              <WishListItem key={item.id} item={item} />
+            ))}
+          </div>
+        </>
       )}
     </>
   );

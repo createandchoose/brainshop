@@ -88,7 +88,12 @@ function WishListItem({ item }) {
           newRelease && 'card-heart-icon'
         }`}
       >
-        <i className="fas fa-times f-8 p-4"></i>
+        <i
+          onClick={() =>
+            dispatch({ type: 'REMOVE_FROM_WISHLIST', payload: item })
+          }
+          className="fas fa-times f-8 p-4"
+        ></i>
       </span>
     </article>
   );
