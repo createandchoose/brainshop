@@ -1,8 +1,12 @@
-import React from 'react';
-import { useCart } from '../context/cart-context';
-
-export default function ProductItem({ item }) {
-  const { dispatch } = useCart();
+import React, { useState } from 'react';
+import { useCart } from 'context/cart-context';
+import { Loader } from 'components';
+import { useAddToCart } from 'custom-hooks/useAddToCart';
+import { useNavigate } from 'react-router-dom';
+function ProductItem({ item }) {
+  let navigate = useNavigate();
+  const { state, dispatch } = useCart();
+  const [loader, setLoader] = useState(false);
   const {
     id,
     image,
@@ -15,6 +19,8 @@ export default function ProductItem({ item }) {
     seller,
     newRelease,
   } = item;
+
+  const addCartItem = () => useAddToCart(item, dispatch, setLoader);
 
   return (
     <article className="card-container m-4 ecom__card-container">
@@ -58,13 +64,21 @@ export default function ProductItem({ item }) {
         </div>
       </main>
       <div className="call-to-action">
-        <button className="btn btn-danger m-h-3 t-c-1">Buy Now</button>
-        <button
-          onClick={() => dispatch({ type: 'ADD_TO_CART', payload: item })}
-          className="btn outline-danger m-h-3 t-c-2"
-        >
-          Add to cart
-        </button>
+        {state.cart.find(item => item.id === id) ? (
+          <button
+            onClick={() => navigate('/cart')}
+            className="btn outline-danger m-h-3 t-c-2 w-100"
+          >
+            Go to cart
+          </button>
+        ) : (
+          <button
+            onClick={addCartItem}
+            className="btn btn-danger m-h-3 t-c-1 w-100"
+          >
+            {loader ? <Loader /> : 'Add To Cart'}
+          </button>
+        )}
       </div>
       {newRelease && (
         <span className="card-badge special-badge f-5 p-3 t-c-1">
@@ -81,3 +95,5 @@ export default function ProductItem({ item }) {
     </article>
   );
 }
+
+export { ProductItem };

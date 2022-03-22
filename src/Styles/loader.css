@@ -1,0 +1,35 @@
+/* loader */
+.loader {
+  border: 8px solid var(--secondary-color);
+  border-top: 8px solid var(--primary-color);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  animation: spin 0.6s linear infinite;
+}
+
+.loader.big-loader {
+  width: 8rem;
+  height: 8rem;
+}
+
+.position-loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader-center {
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

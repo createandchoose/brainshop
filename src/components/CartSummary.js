@@ -1,20 +1,26 @@
 import React from 'react';
-import { useCart } from '../context/cart-context';
+import { useCart } from 'context/cart-context';
 
-export default function CartSummary() {
-  const { cartData, state } = useCart();
+function CartSummary() {
+  const { state } = useCart();
+
+  const cartTotalPrice = state.cart.reduce(
+    (total, item) => parseInt(total + item.price * item.count),
+    0
+  );
+
   return (
     <section class="cart__order-summary m-v-8">
       <main class="cart__sumary-content p-8">
         <header class="heading-4">Price Details</header>
         <hr />
         <div class="order-data">
-          <p class="f-6">Price({cartData.length} items)</p>
-          <p class="f-6">Rs. {state.totalPrice}</p>
+          <p class="f-6">Price({state.cart.length} items)</p>
+          <p class="f-6">Rs. {cartTotalPrice}</p>
         </div>
         <div class="order-data">
-          <p class="f-6">Original Price</p>
-          <p class="f-6">Rs. {parseInt(state.totalPrice) + 200}</p>
+          <p class="f-6">Discount</p>
+          <p class="f-6">&ndash; Rs. {cartTotalPrice + 200}</p>
         </div>
         <div class="order-data">
           <p class="f-6">Delivery Charges</p>
@@ -23,7 +29,7 @@ export default function CartSummary() {
         <hr />
         <div class="order-data">
           <p class="heading-3">Total Amount</p>
-          <p class="heading-3"> Rs. {parseInt(state.totalPrice) + 40}</p>
+          <p class="heading-3">Rs . {cartTotalPrice + 40}</p>
         </div>
         <hr />
         <p class="f-6">You Will Save Rs. 200 on this Order</p>
@@ -32,3 +38,5 @@ export default function CartSummary() {
     </section>
   );
 }
+
+export { CartSummary };

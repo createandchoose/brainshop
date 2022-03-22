@@ -1,10 +1,9 @@
-import React from 'react';
-import ProductItem from '../components/ProductItem';
-import Sidebar from '../components/Sidebar';
-import { useProduct } from '../context/products-context';
+import { ProductItem, Sidebar } from 'components';
+import { useProduct } from 'context/products-context';
+import { BigLoader } from 'components/Loader';
 
 export default function Listing() {
-  const { output } = useProduct();
+  const { products, loading } = useProduct();
   return (
     <div className="list__grid-container">
       {/* SideBar */}
@@ -12,9 +11,14 @@ export default function Listing() {
 
       {/* Items */}
       <main className="list__content centered-row p-2">
-        {output.map(item => (
+        {products.map(item => (
           <ProductItem key={item.id} item={item} />
         ))}
+        {loading && (
+          <div className="position-loader">
+            <BigLoader />
+          </div>
+        )}
       </main>
     </div>
   );

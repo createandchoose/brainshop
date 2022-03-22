@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCart } from '../context/cart-context';
+import { useCart } from 'context/cart-context';
 
-export default function CartItem({ item }) {
+function CartItem({ item }) {
   const { image, productName, name, price, seller, count } = item;
   const { dispatch } = useCart();
   return (
@@ -17,20 +17,25 @@ export default function CartItem({ item }) {
             Rs. {parseInt(price) + 200}
           </span>
           <span className="t-c-3 f-bold m-h-1">(30% OFF)</span>
+          <p className="f-bold t-c-3">Sold By : ({seller})</p>
         </p>
         <p className="f-8 f-bold">Quantity: </p>
         <div className="CartItem-controls">
           <button
-            onClick={() =>
-              dispatch({ type: 'REMOVE_FROM_CART', payload: item })
-            }
+            onClick={() => dispatch({ type: 'DECREASE_COUNT', payload: item })}
             className="CartItem-removeOne"
+            disabled={count > 1 ? false : true}
           >
             &ndash;
           </button>
           <span className="CartItem-count">{count}</span>
           <button
-            onClick={() => dispatch({ type: 'ADD_TO_CART', payload: item })}
+            onClick={() =>
+              dispatch({
+                type: 'INCREASE_ITEM_COUNT',
+                payload: item,
+              })
+            }
             className="CartItem-addOne"
           >
             +
@@ -38,9 +43,18 @@ export default function CartItem({ item }) {
         </div>
         <div class="call-to-action cart__buttons-div">
           <button class="btn btn-danger t-c-1">Move to wishlist</button>
-          <button class="btn outline-danger t-c-2">Remove from cart</button>
+          <button
+            onClick={() =>
+              dispatch({ type: 'REMOVE_FROM_CART', payload: item })
+            }
+            class="btn outline-danger t-c-2"
+          >
+            Remove from cart
+          </button>
         </div>
       </div>
     </section>
   );
 }
+
+export { CartItem };

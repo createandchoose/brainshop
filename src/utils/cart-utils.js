@@ -1,42 +1,42 @@
 const cartReducer = (state, action) => {
-  const existingItem = state.cart.find(i => i.id === action.payload.id);
   switch (action.type) {
     case 'ADD_TO_CART':
       return {
         ...state,
-        cart: [...state.cart, action.payload],
-        cartItems: !existingItem ? state.cartItems + 1 : state.cartItems,
-        totalPrice: state.totalPrice + action.payload.price,
+        cart: [...state.cart, { ...action.payload, count: 1 }],
+        cartItems: state.cartItems + 1,
       };
-    case 'REMOVE_FROM_CART':
-      let index = state.cart.findIndex(i => i.id === action.payload.id); // the index where item is more than 1
-      const copy = [...state.cart];
-      copy.splice(index, 1);
-      console.log('copy', copy);
+    case 'INCREASE_ITEM_COUNT': {
       return {
         ...state,
-        cart: copy,
-        totalPrice: state.totalPrice - action.payload.price,
+        cart: state.cart.map(item => {
+          return item.id === action.payload.id
+            ? { ...item, count: item.count + 1 }
+            : item;
+        }),
       };
+    }
+    case 'DECREASE_COUNT':
+      return {
+        ...state,
+        cart: state.cart.map(item => {
+          console.log(item.count);
+          return item.id === action.payload.id
+            ? { ...item, count: item.count - 1 }
+            : item;
+        }),
+      };
+    case 'REMOVE_FROM_CART':
+      const filteredData = state.cart.filter(i => i.id !== action.payload.id);
+      return {
+        ...state,
+        cart: filteredData,
+        cartItems: state.cartItems - 1,
+      };
+
     default:
       return state;
   }
 };
 
-const displayCart = (state, data) => {
-  const cartReducer = (accum, item, i, arr) => {
-    const existingItem = accum.find(i => i.id === item.id);
-
-    if (!existingItem) {
-      return [...accum, { ...item, count: 1 }];
-    } else {
-      existingItem.count++;
-    }
-
-    return accum;
-  };
-  const updatedCart = data.reduce(cartReducer, []);
-  return updatedCart;
-};
-
-export { cartReducer, displayCart };
+export { cartReducer };
