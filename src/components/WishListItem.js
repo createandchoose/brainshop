@@ -1,6 +1,25 @@
-import React from 'react';
+import { useState } from 'react';
+import { useCart } from 'context/cart-context';
+import { useAddToCart } from 'custom-hooks/useAddToCart';
+import { Loader } from 'components/Loader';
 
-function WishListItem() {
+function WishListItem({ item }) {
+  const { state, dispatch } = useCart();
+  const addCartItem = () => useAddToCart(item, dispatch, setLoader);
+  const [loader, setLoader] = useState(false);
+
+  const {
+    id,
+    image,
+    productName,
+    name,
+    price,
+    inStock,
+    fastDelivery,
+    rating,
+    seller,
+    newRelease,
+  } = item;
   return (
     <article className="card-container m-4 ecom__card-container">
       <figure className="card-image-container">
@@ -69,7 +88,7 @@ function WishListItem() {
           newRelease && 'card-heart-icon'
         }`}
       >
-        <i className="far fa-times f-8 p-4"></i>
+        <i className="fas fa-times f-8 p-4"></i>
       </span>
     </article>
   );
