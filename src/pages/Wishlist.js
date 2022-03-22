@@ -1,9 +1,9 @@
 import { useCart } from 'context/cart-context';
 import { EmptyCart } from 'components';
-import { WishListItem } from 'components/WishListItem';
+import { ProductItem } from 'components';
 
 export default function Wishlist() {
-  const { state } = useCart();
+  const { state, dispatch } = useCart();
   return (
     <>
       {state.wishlist.length === 0 ? (
@@ -15,7 +15,14 @@ export default function Wishlist() {
           </p>
           <div className="wishlist_container">
             {state.wishlist.map(item => (
-              <WishListItem key={item.id} item={item} />
+              <ProductItem key={item.id} item={item}>
+                <i
+                  onClick={() =>
+                    dispatch({ type: 'REMOVE_FROM_WISHLIST', payload: item })
+                  }
+                  className="fas fa-times f-8 p-4"
+                ></i>
+              </ProductItem>
             ))}
           </div>
         </>

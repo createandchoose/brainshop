@@ -4,7 +4,7 @@ import { Loader } from 'components';
 import { useAddToCart } from 'custom-hooks/useAddToCart';
 import { useNavigate } from 'react-router-dom';
 
-function ProductItem({ item }) {
+function ProductItem({ item, children }) {
   let navigate = useNavigate();
   const { state, dispatch } = useCart();
   const [loader, setLoader] = useState(false);
@@ -91,19 +91,7 @@ function ProductItem({ item }) {
           newRelease && 'card-heart-icon'
         }`}
       >
-        {state.wishlist.find(i => i.id === item.id) ? (
-          <i
-            onClick={() =>
-              dispatch({ type: 'REMOVE_FROM_WISHLIST', payload: item })
-            }
-            className="far fa-heart f-8 p-4 fas"
-          ></i>
-        ) : (
-          <i
-            onClick={() => dispatch({ type: 'ADD_TO_WISHLIST', payload: item })}
-            className="far fa-heart f-8 p-4"
-          ></i>
-        )}
+        {children}
       </span>
     </article>
   );
