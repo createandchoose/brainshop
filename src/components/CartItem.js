@@ -1,9 +1,12 @@
 import React from 'react';
 import { useCart } from 'context/cart-context';
+import { useNavigate } from 'react-router-dom';
 
 function CartItem({ item }) {
+  let navigate = useNavigate();
+
   const { image, productName, name, price, seller, count } = item;
-  const { dispatch } = useCart();
+  const { state, dispatch } = useCart();
   return (
     <section class="cart__card-container box-shadow-right">
       <div class="cart__img-div">
@@ -42,7 +45,24 @@ function CartItem({ item }) {
           </button>
         </div>
         <div class="call-to-action cart__buttons-div">
-          <button class="btn btn-danger t-c-1">Move to wishlist</button>
+          {state.wishlist.find(i => i.id === item.id) ? (
+            <button
+              onClick={() => navigate('/wishlist')}
+              class="btn btn-danger t-c-1"
+            >
+              Go to wishlist
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                dispatch({ type: 'ADD_TO_WISHLIST', payload: item })
+              }
+              class="btn btn-danger t-c-1"
+            >
+              Move to wishlist
+            </button>
+          )}
+
           <button
             onClick={() =>
               dispatch({ type: 'REMOVE_FROM_CART', payload: item })
