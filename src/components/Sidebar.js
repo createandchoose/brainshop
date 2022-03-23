@@ -1,6 +1,10 @@
 import React from 'react';
-
+import { useFilter } from 'context/filter-context';
+import { Radio } from 'components/input/Radio';
 export default function Sidebar() {
+  const { state, dispatch } = useFilter();
+  const inputDispatchHandler = e =>
+    dispatch({ type: 'SORT_BY', payload: e.target.value });
   return (
     <aside className="list__aside box-shadow-dark">
       <header className="list__aside-header p-4">
@@ -10,6 +14,37 @@ export default function Sidebar() {
         </a>
       </header>
       <main className="aside__content">
+        <p className="f-8 f-bold p-h-4">Sort By : </p>
+        <div className="list__sort-container">
+          <Radio
+            state={state}
+            handleChange={inputDispatchHandler}
+            id="item-1"
+            value="a"
+            title=" Price - Low to High"
+          />
+          <Radio
+            state={state}
+            handleChange={inputDispatchHandler}
+            id="item-2"
+            value="b"
+            title=" Price - High to Low"
+          />
+          <Radio
+            state={state}
+            handleChange={inputDispatchHandler}
+            id="item-3"
+            value="c"
+            title=" Rating- Low to High"
+          />
+          <Radio
+            state={state}
+            handleChange={inputDispatchHandler}
+            id="item-4"
+            value="d"
+            title=" Rating - High to Low"
+          />
+        </div>
         <p className="f-8 f-bold p-h-4">Price</p>
         <div className="centered-row space-around-row">
           <p className="f-6">50</p>
@@ -23,7 +58,7 @@ export default function Sidebar() {
           name="volume"
         />
         <p className="f-8 f-bold p-4">Category</p>
-        <div className="centered-row space-around-row component-border p-4">
+        <div className="position-checkbox component-border p-4">
           <label for="books" className="checkbox f-6">
             <input
               checked
@@ -110,22 +145,6 @@ export default function Sidebar() {
             />
             <div className="radio__radio border-round p-1"></div>1 star & above
           </label>
-        </div>
-        <div className="list__sort-container">
-          <label for="user-rating" className="f-8 f-bold p-h-4">
-            Sort by
-          </label>
-          <select
-            name="user-rating"
-            id="user-rating"
-            className="list__aside-select"
-          >
-            <option value="relevance" selected>
-              Relevance
-            </option>
-            <option value="low">Low to high</option>
-            <option value="high">High to low</option>
-          </select>
         </div>
       </main>
     </aside>
