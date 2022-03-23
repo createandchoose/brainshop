@@ -6,6 +6,10 @@ const sortItems = (state, data) => {
     case 'b':
       return [...data].sort((a, b) => b.price - a.price);
 
+    case 'c':
+      return [...data].sort((a, b) => a.rating - b.rating);
+    case 'd':
+      return [...data].sort((a, b) => b.rating - a.rating);
     default:
       return data;
   }
@@ -40,10 +44,30 @@ const ratingsFilter = (state, data) => {
   return data;
 };
 
+const filterTitles = [
+  {
+    value: 'a',
+    filterTitleName: 'Price - Low to High',
+  },
+  {
+    value: 'b',
+    filterTitleName: 'Price - High to Low',
+  },
+  {
+    value: 'c',
+    filterTitleName: 'Ratings - Low to High',
+  },
+  {
+    value: 'd',
+    filterTitleName: 'Ratings - High to Low',
+  },
+];
+
 export {
   sortItems,
   includeOutOfStock,
   icnludeFastDelivery,
   sliderFilter,
   ratingsFilter,
+  filterTitles,
 };

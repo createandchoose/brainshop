@@ -1,10 +1,15 @@
 import React from 'react';
 import { useFilter } from 'context/filter-context';
 import { Radio } from 'components/input/Radio';
+import { RangeSlider } from './input/RangeSlider';
+import { filterTitles } from 'utils/filter-utils';
+
 export default function Sidebar() {
   const { state, dispatch } = useFilter();
+
   const inputDispatchHandler = e =>
     dispatch({ type: 'SORT_BY', payload: e.target.value });
+
   return (
     <aside className="list__aside box-shadow-dark">
       <header className="list__aside-header p-4">
@@ -15,48 +20,25 @@ export default function Sidebar() {
       </header>
       <main className="aside__content">
         <p className="f-8 f-bold p-h-4">Sort By : </p>
-        <div className="list__sort-container">
-          <Radio
-            state={state}
-            handleChange={inputDispatchHandler}
-            id="item-1"
-            value="a"
-            title=" Price - Low to High"
-          />
-          <Radio
-            state={state}
-            handleChange={inputDispatchHandler}
-            id="item-2"
-            value="b"
-            title=" Price - High to Low"
-          />
-          <Radio
-            state={state}
-            handleChange={inputDispatchHandler}
-            id="item-3"
-            value="c"
-            title=" Rating- Low to High"
-          />
-          <Radio
-            state={state}
-            handleChange={inputDispatchHandler}
-            id="item-4"
-            value="d"
-            title=" Rating - High to Low"
-          />
+        <div className="list__sort-container component-border">
+          {filterTitles.map((item, i) => (
+            <Radio
+              state={state}
+              handleChange={inputDispatchHandler}
+              id={`item-${i + 1}`}
+              value={item.value}
+              title={item.filterTitleName}
+            />
+          ))}
         </div>
-        <p className="f-8 f-bold p-h-4">Price</p>
+        <p className="f-8 f-bold p-h-4">Price Range : </p>
         <div className="centered-row space-around-row">
-          <p className="f-6">50</p>
-          <p className="f-6">150</p>
-          <p className="f-6">200</p>
+          <p className="f-6">100</p>
+          <p className="f-6">500</p>
+          <p className="f-6">1000</p>
         </div>
-        <input
-          type="range"
-          className="custom-range m-4"
-          id="volume"
-          name="volume"
-        />
+        <RangeSlider state={state} dispatch={dispatch} />
+
         <p className="f-8 f-bold p-4">Category</p>
         <div className="position-checkbox component-border p-4">
           <label for="books" className="checkbox f-6">

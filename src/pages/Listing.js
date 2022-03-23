@@ -2,10 +2,11 @@ import { ProductItem, Sidebar } from 'components';
 import { useProduct } from 'context/products-context';
 import { BigLoader } from 'components/Loader';
 import { useCart } from 'context/cart-context';
-
+import { useFilter } from 'context/filter-context';
 export default function Listing() {
   const { products, loading } = useProduct();
   const { state, dispatch } = useCart();
+  const { filterData } = useFilter();
   return (
     <div className="list__grid-container">
       {/* SideBar */}
@@ -13,7 +14,7 @@ export default function Listing() {
 
       {/* Items */}
       <main className="list__content centered-row p-2">
-        {products.map(item => (
+        {filterData.map(item => (
           <ProductItem key={item.id} item={item}>
             {state.wishlist.find(i => i.id === item.id) ? (
               <i
