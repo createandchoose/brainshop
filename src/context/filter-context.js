@@ -6,6 +6,7 @@ import {
   icnludeFastDelivery,
   filterCategories,
   sliderFilter,
+  searchedRecipe,
 } from 'utils/filter-utils';
 import { useProduct } from 'context/products-context';
 
@@ -15,7 +16,6 @@ const useFilter = () => useContext(filterContext);
 
 const FilterProvider = ({ children }) => {
   const { products: data } = useProduct();
-
   const [state, dispatch] = useReducer(filterReducer, initialState);
   const composeReducer = (accum, func) => {
     accum = func(state, accum);
@@ -33,7 +33,8 @@ const FilterProvider = ({ children }) => {
     includeOutOfStock,
     icnludeFastDelivery,
     filterCategories,
-    sliderFilter
+    sliderFilter,
+    searchedRecipe
   );
 
   const filterData = callFuncInOrder(data);

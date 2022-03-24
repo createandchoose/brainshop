@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from 'context/cart-context';
+import { SearchBar } from 'components/input/SearchBar';
 function Navbar() {
   const { state } = useCart();
   return (
@@ -14,16 +15,7 @@ function Navbar() {
             Brain Store
           </Link>
         </div>
-        <div className="nav-searchBar-container ecom-searchbar">
-          <span className="nav-searchIcon">
-            <i className="fa fa-search f-5 t-c-3"></i>
-          </span>
-          <input
-            type="text"
-            className="p-v-3 nav-searchBar"
-            placeholder="Search Items..."
-          />
-        </div>
+        <SearchBar />
         <div className="link-wrapper">
           <Link
             to="/login"

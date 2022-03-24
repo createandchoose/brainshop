@@ -46,6 +46,14 @@ const sliderFilter = (state, data) => {
   return [...data].filter(item => item.price <= state.rangeValue);
 };
 
+const searchedRecipe = (state, data) => {
+  return state.searchValue
+    ? [...data].filter(item =>
+        item.name.toLowerCase().includes(state.searchValue.toLowerCase())
+      )
+    : data;
+};
+
 const filterTitles = [
   {
     value: 'a',
@@ -121,6 +129,7 @@ export {
   icnludeFastDelivery,
   sliderFilter,
   filterTitles,
+  searchedRecipe,
   filterCategories,
   checkObj,
 };

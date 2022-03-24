@@ -5,6 +5,7 @@ export const initialState = {
   categories: [],
   rangeValue: 1000,
   ratings: [false, false, false, false, false],
+  searchValue: '',
 };
 
 export const filterReducer = (state, action) => {
@@ -44,13 +45,11 @@ export const filterReducer = (state, action) => {
         rangeValue: Number(action.payload),
       };
 
-    case 'RATINGS':
-      const values = action.payload - 1;
-      const modifiedArray = [...state.ratings];
-
-      modifiedArray[values] = !modifiedArray[values];
-
-      return { ...state, ratings: modifiedArray };
+    case 'SEARCH':
+      return {
+        ...state,
+        searchValue: action.payload,
+      };
 
     default:
       return state;
