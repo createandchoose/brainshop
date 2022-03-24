@@ -30,7 +30,7 @@ const includeOutOfStock = (state, data) => {
   return data;
 };
 
-const icnludeFastDelivery = (state, data) => {
+const includeFastDelivery = (state, data) => {
   return state.fastDelivery
     ? [...data].filter(item => item.fastDelivery)
     : data;
@@ -126,7 +126,7 @@ function checkObj(dispatch) {
 export {
   sortItems,
   includeOutOfStock,
-  icnludeFastDelivery,
+  includeFastDelivery,
   sliderFilter,
   filterTitles,
   searchedRecipe,

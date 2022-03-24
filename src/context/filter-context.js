@@ -3,7 +3,7 @@ import { filterReducer, initialState } from 'context/filter-reducer';
 import {
   sortItems,
   includeOutOfStock,
-  icnludeFastDelivery,
+  includeFastDelivery,
   filterCategories,
   sliderFilter,
   searchedRecipe,
@@ -31,7 +31,7 @@ const FilterProvider = ({ children }) => {
   const callFuncInOrder = compose(
     sortItems,
     includeOutOfStock,
-    icnludeFastDelivery,
+    includeFastDelivery,
     filterCategories,
     sliderFilter,
     searchedRecipe

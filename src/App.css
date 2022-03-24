@@ -1,5 +1,6 @@
 @import url('https://cerebrumui.netlify.app/style.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url('https://unicons.iconscout.com/release/v4.0.0/css/line.css');
 @import './Styles/navbar.css';
 @import './Styles/homepage.css';
 @import './Styles/listing.css';
@@ -7,6 +8,7 @@
 @import './Styles/cart.css';
 @import './Styles/loader.css';
 @import './Styles/wishlist.css';
+@import './Styles/login.css';
 @media screen and (max-width: 600px) {
   .badge-caption {
     display: none;
