@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SignIn() {
+function SignIn({ setIsActive }) {
   return (
     <div class="form login">
       <span class="form__title heading-3">Login</span>
@@ -54,9 +54,9 @@ function SignIn() {
       <div class="login-signup center-text">
         <span class="f-6">
           Not a member?
-          <a href="#" class="f-6 signup-link">
+          <span onClick={() => setIsActive(true)} class="f-6 signup-link">
             Signup now
-          </a>
+          </span>
         </span>
       </div>
     </div>

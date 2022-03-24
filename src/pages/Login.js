@@ -1,14 +1,15 @@
 import { SignIn } from 'components/SignIn';
 import { SignUp } from 'components/SignUp';
-import React from 'react';
+import { useState } from 'react';
 
 export default function Login() {
-  return (
-    <section class="forms__container">
-      <main class="forms">
-        <SignIn />
+  const [isActive, setIsActive] = useState(false);
 
-        <SignUp />
+  return (
+    <section class={`forms__container ${isActive ? 'active' : ''}`}>
+      <main class="forms">
+        <SignIn setIsActive={setIsActive} />
+        <SignUp setIsActive={setIsActive} />
       </main>
     </section>
   );
