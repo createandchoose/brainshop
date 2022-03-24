@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from 'context/cart-context';
 import { SearchBar } from 'components/input/SearchBar';
+import { useLocation } from 'react-router-dom';
 function Navbar() {
+  const location = useLocation();
   const { state } = useCart();
   return (
     <header className="main-head ecom-navbar z-index-lg">
@@ -15,7 +17,7 @@ function Navbar() {
             Brain Store
           </Link>
         </div>
-        <SearchBar />
+        {location.pathname !== '/' && <SearchBar />}
         <div className="link-wrapper">
           <Link
             to="/login"
