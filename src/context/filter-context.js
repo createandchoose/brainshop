@@ -4,8 +4,8 @@ import {
   sortItems,
   includeOutOfStock,
   icnludeFastDelivery,
+  filterCategories,
   sliderFilter,
-  ratingsFilter,
 } from 'utils/filter-utils';
 import { useProduct } from 'context/products-context';
 
@@ -32,8 +32,8 @@ const FilterProvider = ({ children }) => {
     sortItems,
     includeOutOfStock,
     icnludeFastDelivery,
-    sliderFilter,
-    ratingsFilter
+    filterCategories,
+    sliderFilter
   );
 
   const filterData = callFuncInOrder(data);

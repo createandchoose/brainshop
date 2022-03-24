@@ -2,6 +2,7 @@ export const initialState = {
   sortBy: undefined,
   outOfStock: true,
   fastDelivery: false,
+  categories: [],
   rangeValue: 1000,
   ratings: [false, false, false, false, false],
 };
@@ -27,6 +28,14 @@ export const filterReducer = (state, action) => {
       return {
         ...state,
         fastDelivery: action.payload,
+      };
+
+    case 'CATEGORY_FILTER':
+      return {
+        ...state,
+        categories: state.categories.includes(action.payload)
+          ? state.categories.filter(item => item !== action.payload)
+          : [...state.categories, action.payload],
       };
 
     case 'RANGE':

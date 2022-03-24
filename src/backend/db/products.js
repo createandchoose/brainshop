@@ -96,7 +96,7 @@ export const products = [
     newRelease: Math.random() < 0.3,
     productName: 'half brain + flower on newspaper',
 
-    categoryName: 'sticker',
+    categoryName: 'art',
   },
 
   {

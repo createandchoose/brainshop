@@ -40,3 +40,11 @@
   color: var(--secondary-color);
   border: 1px solid var(--border-color);
 }
+
+.clear-all {
+  cursor: pointer;
+}
+
+.clear-all:hover {
+  text-decoration: underline;
+}

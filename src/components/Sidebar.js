@@ -2,11 +2,11 @@ import React from 'react';
 import { useFilter } from 'context/filter-context';
 import { Radio } from 'components/input/Radio';
 import { RangeSlider } from './input/RangeSlider';
-import { filterTitles } from 'utils/filter-utils';
+import { filterTitles, checkObj } from 'utils/filter-utils';
+import { Checkbox } from 'components/input/Checkbox';
 
 export default function Sidebar() {
   const { state, dispatch } = useFilter();
-
   const inputDispatchHandler = e =>
     dispatch({ type: 'SORT_BY', payload: e.target.value });
 
@@ -14,9 +14,12 @@ export default function Sidebar() {
     <aside className="list__aside box-shadow-dark">
       <header className="list__aside-header p-4">
         <p className="f-8 f-bold">Filters</p>
-        <a href="#" className="f-6 t-c-3 f-bold">
+        <p
+          onClick={() => dispatch({ type: 'CLEAR' })}
+          className="f-6 t-c-3 f-bold clear-all"
+        >
           Clear
-        </a>
+        </p>
       </header>
       <main className="aside__content">
         <p className="f-8 f-bold p-h-4">Sort By : </p>
@@ -41,92 +44,33 @@ export default function Sidebar() {
 
         <p className="f-8 f-bold p-4">Category</p>
         <div className="position-checkbox component-border p-4">
-          <label for="books" className="checkbox f-6">
-            <input
-              checked
-              className="checkbox__input"
-              type="checkbox"
-              name="myCheckboxName"
-              id="books"
-            />
-            <div className="checkbox__box"></div>
-            Books
-          </label>
-          <label for="hoodies" className="checkbox f-6">
-            <input
-              className="checkbox__input"
-              type="checkbox"
-              name="myCheckboxName"
-              id="hoodies"
-            />
-            <div className="checkbox__box"></div>
-            Hoodies
-          </label>
-
-          <label for="stickers" className="checkbox f-6">
-            <input
-              className="checkbox__input"
-              type="checkbox"
-              name="myCheckboxName"
-              id="stickers"
-            />
-            <div className="checkbox__box"></div>
-            Stickers
-          </label>
-
-          <label for="art" className="checkbox f-6">
-            <input
-              className="checkbox__input"
-              type="checkbox"
-              name="myCheckboxName"
-              id="art"
-            />
-            <div className="checkbox__box"></div>
-            Art
-          </label>
-
-          <label for="t-shirt" className="checkbox f-6">
-            <input
-              className="checkbox__input"
-              type="checkbox"
-              name="myCheckboxName"
-              id="t-shirt"
-            />
-            <div className="checkbox__box"></div>
-            T-Shirt
-          </label>
+          {checkObj(dispatch).map((item, i) => {
+            return (
+              <Checkbox
+                id={`checkbox-${i + 1}`}
+                title={item.checkboxTitle}
+                handleCheckboxChange={item.dispatchFunction}
+                booleanChecked={
+                  item.type
+                    ? state[item.name]
+                    : state.categories.includes(item.name)
+                }
+                name={item.name}
+              />
+            );
+          })}
         </div>
         <p className="f-8 f-bold p-4">Rating</p>
         <div className="list__rating-container">
-          <label className="radio f-6" for="item-1">
-            <input
-              type="radio"
-              name="item"
-              id="item-1"
-              className="radio__input"
+          {[4, 3, 2, 1].map((item, i) => (
+            <Radio
+              state={state}
+              handleChange={inputDispatchHandler}
+              id={`item-${item + 5}`}
+              value={item.toString()}
+              title={`${item} star & above`}
             />
-            <div className="radio__radio border-round p-1"></div>4 star & above
-          </label>
-
-          <label className="radio f-6" for="item-2">
-            <input
-              type="radio"
-              name="item"
-              id="item-2"
-              className="radio__input"
-            />
-            <div className="radio__radio border-round p-1"></div>3 star & above
-          </label>
-
-          <label className="radio f-6" for="item-3">
-            <input
-              type="radio"
-              name="item"
-              id="item-3"
-              className="radio__input"
-            />
-            <div className="radio__radio border-round p-1"></div>1 star & above
-          </label>
+          ))}
         </div>
       </main>
     </aside>
