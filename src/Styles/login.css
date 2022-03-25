@@ -36,18 +36,22 @@
 
 .forms__container.active .login {
   margin-left: -50%;
+  visibility: hidden;
   opacity: 0;
-  transition: margin-left 0.18s ease, opacity 0.16s ease;
+  transition: margin-left 0.18s ease, opacity 0.16s ease,
+    visibility 0s linear 300ms;
 }
 
 .forms__container .sign-up {
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.09s ease;
+  transition: opacity 0.09s ease, visibility 0s linear 300ms;
 }
 
 .forms__container.active .sign-up {
+  visibility: visible;
   opacity: 1;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0s linear 0s;
 }
 
 .forms__container.active .forms {
@@ -134,4 +138,12 @@
 
 .form .login-signup {
   margin-top: 2rem;
+}
+
+.form-change-link {
+  cursor: pointer;
+}
+
+.form-change-link:hover {
+  text-decoration: underline;
 }
