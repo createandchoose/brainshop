@@ -18,3 +18,10 @@
   top: -6px;
   right: -2px;
 }
+
+.nav-clearIcon {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  cursor: pointer;
+}

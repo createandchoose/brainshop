@@ -7,3 +7,8 @@ export { ProductItem } from 'components/ProductItem';
 export { Sidebar } from 'components/Sidebar';
 export { Loader } from 'components/Loader';
 export { BigLoader } from 'components/Loader';
+export { Checkbox } from 'components/input/Checkbox';
+export { Radio } from 'components/input/Radio';
+export { SearchBar } from 'components/input/SearchBar';
+export { SignIn } from 'components/SignIn';
+export { SignUp } from 'components/SignUp';
