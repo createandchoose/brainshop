@@ -1,11 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from 'context/cart-context';
+import { useAuth } from 'context/auth-context';
 import { SearchBar } from 'components/input/SearchBar';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 function Navbar() {
+  const navigate = useNavigate();
   const location = useLocation();
   const { state } = useCart();
+  const { auth, setAuth } = useAuth();
+
+  console.log(auth, ' - navbar');
+
+  const loginUserHandler = () => {
+    navigate('/login');
+  };
+
+  const logoutUserHandler = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('isAuth');
+    setAuth({ token: '', isAuth: false });
+    navigate('/');
+  };
+
   return (
     <header className="main-head ecom-navbar z-index-lg">
       <nav className="nav-component">
@@ -19,13 +36,23 @@ function Navbar() {
         </div>
         {location.pathname !== '/' && <SearchBar />}
         <div className="link-wrapper">
-          <Link
-            to="/login"
-            className="t-c-2 f-5 p-v-3 p-h-8 m-h-3 sign-in-button"
-          >
-            Sign in{' '}
-          </Link>
-
+          {auth.isAuth ? (
+            <Link
+              onClick={logoutUserHandler}
+              to="/"
+              className="t-c-2 f-5 p-v-3 p-h-8 m-h-3 sign-in-button"
+            >
+              Log Out{' '}
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              onClick={loginUserHandler}
+              className="t-c-2 f-5 p-v-3 p-h-8 m-h-3 sign-in-button"
+            >
+              Log in{' '}
+            </Link>
+          )}
           <div className="badge-wrapper p-h-4 m-h-3">
             <span className="badge-icon f-8 m-2">
               <Link to="/wishlist" className="t-c-1">

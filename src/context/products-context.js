@@ -27,6 +27,7 @@ const ProductProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    // if (!isAuth) return;
     (async () => {
       try {
         const res = await axios.get('/api/products');
