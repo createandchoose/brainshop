@@ -8,7 +8,6 @@ const ProductProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const contextValue = {
     categories,
     products,
@@ -27,7 +26,6 @@ const ProductProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // if (!isAuth) return;
     (async () => {
       try {
         const res = await axios.get('/api/products');
