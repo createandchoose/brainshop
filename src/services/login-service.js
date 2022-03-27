@@ -12,7 +12,7 @@ const loginService = async (email, password) => {
       throw new Error(res);
     }
   } catch (err) {
-    console.log(err);
+    console.log(err, 'ERROR');
   }
 };
 export { loginService };
