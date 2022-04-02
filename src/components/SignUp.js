@@ -34,7 +34,7 @@ function SignUp() {
               })
             }
             type="text"
-            placeholder="Enter your name"
+            placeholder="First Name"
             class="form__email-input"
             required
           />
@@ -51,7 +51,7 @@ function SignUp() {
               })
             }
             type="text"
-            placeholder="Enter your name"
+            placeholder="Last Name"
             class="form__email-input"
             required
           />

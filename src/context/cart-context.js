@@ -11,7 +11,6 @@ const initialState = {
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  console.log(typeof state.wishlist);
   const ContextValues = {
     state,
     dispatch,
