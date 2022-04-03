@@ -13,3 +13,4 @@ export { SearchBar } from 'components/input/SearchBar';
 export { SignIn } from 'components/SignIn';
 export { SignUp } from 'components/SignUp';
 export { PrivateRoute } from 'components/PrivateRoute';
+export { ProductPage } from 'components/ProductPage';

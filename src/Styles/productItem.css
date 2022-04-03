@@ -9,6 +9,10 @@
   gap: 3px;
 }
 
+.card-image-container:hover {
+  filter: drop-shadow(2px 2px 5px rgb(0 0 0 / 0.5));
+}
+
 /* card */
 
 .card-container.ecom__card-container {

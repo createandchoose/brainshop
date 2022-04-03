@@ -9,7 +9,7 @@ function ProductItem({ item, children }) {
   const { state, dispatch } = useCart();
   const [loader, setLoader] = useState(false);
   const {
-    id,
+    _id,
     image,
     productName,
     name,
@@ -22,10 +22,13 @@ function ProductItem({ item, children }) {
   } = item;
 
   const addCartItem = () => useAddToCart(item, dispatch, setLoader);
+  const navigateProductDetail = () => {
+    navigate(`/product/${_id}`);
+  };
 
   return (
     <article className="card-container m-4 ecom__card-container">
-      <figure className="card-image-container">
+      <figure onClick={navigateProductDetail} className="card-image-container">
         <img
           loading="lazy"
           src={image}
@@ -35,7 +38,7 @@ function ProductItem({ item, children }) {
           className="card-image"
         />
       </figure>
-      <main className="card-body l-h-1">
+      <main onClick={navigateProductDetail} className="card-body l-h-1">
         <h3 className="f-7 l-h-4">{name}</h3>
         <p className="l-h-3">
           <span className="price f-7">Rs. {parseInt(price)}</span>
@@ -65,7 +68,7 @@ function ProductItem({ item, children }) {
         </div>
       </main>
       <div className="call-to-action">
-        {state.cart.find(item => item.id === id) ? (
+        {state.cart.find(item => item._id === _id) ? (
           <button
             onClick={() => navigate('/cart')}
             className="btn outline-danger m-h-3 t-c-2 w-100"
