@@ -1,7 +1,7 @@
-import { createContext, useContext, useReducer } from 'react';
-
+import { createContext, useContext, useReducer, useState } from 'react';
 const authContext = createContext();
 const useAuth = () => useContext(authContext);
+import { logInHandler, signUpHandler } from 'utils/auth-utils';
 
 const initialState = {
   isActive: false,
@@ -9,10 +9,12 @@ const initialState = {
   email: '',
   password: '',
   rememberMe: false,
-  userName: '',
+  signUpFirstName: '',
+  signUpLastName: '',
   signUpEmail: '',
   signUpPassword: '',
-  signUpConfirmPassword: '',
+  isAuth: false,
+  token: '',
 };
 
 const signInReducer = (state, action) => {
@@ -37,6 +39,20 @@ const signInReducer = (state, action) => {
         ...state,
         showPassword: !state.showPassword,
       };
+
+    case 'SWITCH_AUTH':
+      return {
+        ...state,
+        isAuth: !state.isAuth,
+      };
+
+    case 'FILL_GUEST':
+      return {
+        ...state,
+        email: 'adarshbalika@gmail.com',
+        password: 'adarshBalika123',
+      };
+
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }
@@ -44,10 +60,22 @@ const signInReducer = (state, action) => {
 
 const AuthProvider = ({ children }) => {
   const [loginState, dispatch] = useReducer(signInReducer, initialState);
+  const [auth, setAuth] = useState(() => {
+    const token = localStorage.getItem('token');
 
+    if (token) return { token, isAuth: true };
+
+    return { token: '', isAuth: false };
+  });
+  // const [isAuth, setIsAuth] = useState(false);
+  console.log('isAuth : ', auth.isAuth);
   const contextValue = {
     loginState,
     dispatch,
+    signUpHandler,
+    logInHandler,
+    auth,
+    setAuth,
   };
 
   return (

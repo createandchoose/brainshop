@@ -1,26 +1,57 @@
 import React from 'react';
 import { Checkbox } from 'components/input/Checkbox';
+import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from 'context/auth-context';
 
 function SignUp() {
-  const { loginState, dispatch } = useAuth();
+  const { loginState, dispatch, signUpHandler, setAuth } = useAuth();
+  const navigate = useNavigate();
+
+  const formSubmitHandler = e => {
+    e.preventDefault();
+    signUpHandler(
+      loginState.signUpEmail,
+      loginState.signUpPassword,
+      loginState.signUpFirstName,
+      loginState.signUpLastName,
+      setAuth,
+      navigate
+    );
+  };
 
   return (
     <div class="form sign-up">
       <span class="form__title heading-3">Sign up</span>
-      <form action="#">
+      <form onSubmit={formSubmitHandler}>
         <div class="input-field">
           <input
-            value={loginState.userName}
+            value={loginState.signUpFirstName}
             onChange={event =>
               dispatch({
                 type: 'TEXT_INPUT',
-                payload: { key: 'userName', value: event.target.value },
+                payload: { key: 'signUpFirstName', value: event.target.value },
               })
             }
             type="text"
-            placeholder="Enter your name"
+            placeholder="First Name"
+            class="form__email-input"
+            required
+          />
+          <i class="uil uil-user form-icon left-icon"></i>
+        </div>
+
+        <div class="input-field">
+          <input
+            value={loginState.signUpLastName}
+            onChange={event =>
+              dispatch({
+                type: 'TEXT_INPUT',
+                payload: { key: 'signUpLastName', value: event.target.value },
+              })
+            }
+            type="text"
+            placeholder="Last Name"
             class="form__email-input"
             required
           />
@@ -61,7 +92,7 @@ function SignUp() {
           <i class="uil uil-lock form-icon left-icon"></i>
         </div>
 
-        <div class="input-field">
+        {/* <div class="input-field">
           <input
             value={loginState.signUpConfirmPassword}
             onChange={event =>
@@ -85,7 +116,7 @@ function SignUp() {
               loginState.showPassword ? '' : '-slash'
             }  form-icon showHidePw`}
           ></i>
-        </div>
+        </div> */}
 
         <div class="checkbox-container">
           <div class="checkbox-content">

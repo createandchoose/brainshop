@@ -35,16 +35,19 @@ const cartReducer = (state, action) => {
     case 'ADD_TO_WISHLIST':
       return {
         ...state,
-        wishlist: [...state.wishlist, action.payload],
+        wishlist: action.payload,
+      };
+
+    case 'SET_WISHLIST':
+      return {
+        ...state,
+        wishlist: action.payload,
       };
 
     case 'REMOVE_FROM_WISHLIST':
-      const wishlistFilteredData = state.wishlist.filter(
-        i => i.id !== action.payload.id
-      );
       return {
         ...state,
-        wishlist: wishlistFilteredData,
+        wishlist: action.payload,
       };
 
     default:

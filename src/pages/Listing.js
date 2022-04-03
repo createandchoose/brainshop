@@ -3,10 +3,13 @@ import { useProduct } from 'context/products-context';
 import { BigLoader } from 'components/Loader';
 import { useCart } from 'context/cart-context';
 import { useFilter } from 'context/filter-context';
+import { addToWishlist, removeFromWishlist } from 'utils/wishlist-utils';
+
 export default function Listing() {
   const { products, loading } = useProduct();
   const { state, dispatch } = useCart();
   const { filterData } = useFilter();
+
   return (
     <div className="list__grid-container">
       {/* SideBar */}
@@ -18,16 +21,12 @@ export default function Listing() {
           <ProductItem key={item.id} item={item}>
             {state.wishlist.find(i => i.id === item.id) ? (
               <i
-                onClick={() =>
-                  dispatch({ type: 'REMOVE_FROM_WISHLIST', payload: item })
-                }
+                onClick={() => removeFromWishlist(item._id, dispatch)}
                 className="far fa-heart f-8 p-4 fas"
               ></i>
             ) : (
               <i
-                onClick={() =>
-                  dispatch({ type: 'ADD_TO_WISHLIST', payload: item })
-                }
+                onClick={() => addToWishlist(item, dispatch)}
                 className="far fa-heart f-8 p-4"
               ></i>
             )}

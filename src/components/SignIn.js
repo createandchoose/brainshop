@@ -1,13 +1,19 @@
-import React, { useReducer } from 'react';
 import { Checkbox } from 'components/input/Checkbox';
 import { useAuth } from 'context/auth-context';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
-  const { loginState, dispatch } = useAuth();
+  const { loginState, dispatch, logInHandler, setAuth, auth } = useAuth();
+  const navigate = useNavigate();
+  const logInFormHandler = e => {
+    e.preventDefault();
+    logInHandler(loginState.email, loginState.password, setAuth, navigate);
+  };
+
   return (
     <div class="form login">
       <span class="form__title heading-3">Login</span>
-      <form action="#">
+      <form onSubmit={logInFormHandler}>
         <div class="input-field">
           <input
             value={loginState.email}
@@ -72,10 +78,16 @@ function SignIn() {
           <button class="btn btn-danger t-c-1 final-cta w-100 round-corner">
             Login Now
           </button>
+          <button
+            onClick={() => dispatch({ type: 'FILL_GUEST' })}
+            class="btn outline-danger t-c-2 final-cta w-100 round-corner m-v-2"
+          >
+            Guest Login
+          </button>
         </div>
       </form>
 
-      <div class="login-signup center-text">
+      <div class="login-signup center-text p-v-4">
         <span class="f-6">
           Not a member?
           <span

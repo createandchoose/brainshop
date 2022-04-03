@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCart } from 'context/cart-context';
 import { useNavigate } from 'react-router-dom';
+import { addToWishlist } from 'utils/wishlist-utils';
 
 function CartItem({ item }) {
   let navigate = useNavigate();
@@ -45,7 +46,7 @@ function CartItem({ item }) {
           </button>
         </div>
         <div class="call-to-action cart__buttons-div">
-          {state.wishlist.find(i => i.id === item.id) ? (
+          {state.wishlist.find(i => i._id === item._id) ? (
             <button
               onClick={() => navigate('/wishlist')}
               class="btn btn-danger t-c-1"
@@ -54,9 +55,7 @@ function CartItem({ item }) {
             </button>
           ) : (
             <button
-              onClick={() =>
-                dispatch({ type: 'ADD_TO_WISHLIST', payload: item })
-              }
+              onClick={() => addToWishlist(item, dispatch)}
               class="btn btn-danger t-c-1"
             >
               Move to wishlist
