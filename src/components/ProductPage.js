@@ -17,7 +17,7 @@ function ProductPage({
         <img className="product-card__image" src={image} alt={productName} />
       </div>
       <div className="product-card__details center-flex p-6 ">
-        <p className="heading-3 l-h-4 t-c-1 product-card__name margin-reset ">
+        <p className="l-h-4 t-c-1 product-card__name margin-reset ">
           {name}{' '}
           <p className="product-card__seller f-bold margin-reset">{seller}</p>
         </p>

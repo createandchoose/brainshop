@@ -12,8 +12,7 @@ import { PrivateRoute } from 'components/PrivateRoute';
 
 function App() {
   const location = useLocation();
-  const routeCheck =
-    location.pathname === '/login' || location.pathname === '/signup';
+  const routeCheck = location.pathname === '/login';
   return (
     <div className="App">
       {!routeCheck && <Navbar />}

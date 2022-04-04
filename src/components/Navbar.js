@@ -34,7 +34,7 @@ function Navbar() {
             Brain Store
           </Link>
         </div>
-        {location.pathname !== '/' && <SearchBar />}
+        {location.pathname === '/listing' && <SearchBar />}
         <div className="link-wrapper">
           {auth.isAuth ? (
             <Link
