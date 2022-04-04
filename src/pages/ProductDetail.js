@@ -14,7 +14,7 @@ function ProductDetail() {
   console.log(specificproduct);
   return (
     <div className="product-page-wrapper center-flex">
-      <ProductPage {...specificproduct} />
+      <ProductPage item={specificproduct} />
     </div>
   );
 }

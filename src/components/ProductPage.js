@@ -1,16 +1,22 @@
-import React from 'react';
+import { useCart } from 'context/cart-context';
+import { useNavigate } from 'react-router-dom';
+import { addToWishlist } from 'utils/wishlist-utils';
 
-function ProductPage({
-  _id,
-  image,
-  productName,
-  name,
-  price,
-  inStock,
-  fastDelivery,
-  rating,
-  seller,
-}) {
+function ProductPage({ item }) {
+  let navigate = useNavigate();
+  const { state, dispatch } = useCart();
+  const {
+    _id,
+    image,
+    productName,
+    name,
+    price,
+    inStock,
+    fastDelivery,
+    rating,
+    seller,
+  } = item;
+
   return (
     <main className="product-card box-shadow-light ">
       <div className="product-card__image-box center-flex">
@@ -72,21 +78,45 @@ function ProductPage({
         </div>
 
         <div className="product-card__cta m-v-4 w-100">
-          {inStock ? (
-            <button className="btn btn-outline-danger m-h-3 t-c-2 ">
+          {state.cart.find(item => item._id === _id) ? (
+            <button
+              onClick={() => navigate('/cart')}
+              className="btn btn-primary m-h-3 t-c-1"
+            >
+              Go to cart
+            </button>
+          ) : inStock ? (
+            <button
+              onClick={() =>
+                dispatch({
+                  type: 'ADD_TO_CART',
+                  payload: item,
+                })
+              }
+              className="btn btn-primary m-h-3 t-c-1"
+            >
               Add to Cart
             </button>
           ) : (
-            <button
-              disabled={true}
-              className="btn btn-outline-danger m-h-3 t-c-2 "
-            >
-              Out Of Stock
+            <button disabled={true} className="btn btn-primary m-h-3 t-c-1">
+              Out of stock
             </button>
           )}
-          <button className="btn btn-custom m-h-3 t-c-1 ">
-            Move to wishlist
-          </button>
+          {state.wishlist.find(item => item._id === _id) ? (
+            <button
+              onClick={() => navigate('/wishlist')}
+              className="btn btn-primary m-h-3 t-c-1"
+            >
+              Go to wishlist
+            </button>
+          ) : (
+            <button
+              onClick={() => addToWishlist(item, dispatch)}
+              className="btn btn-primary m-h-3 t-c-1"
+            >
+              Move to wishlist
+            </button>
+          )}
         </div>
       </div>
     </main>
