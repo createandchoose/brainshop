@@ -1,4 +1,5 @@
 export const initialState = {
+  isMenuOpen: false,
   sortBy: undefined,
   outOfStock: true,
   fastDelivery: false,
@@ -51,6 +52,11 @@ export const filterReducer = (state, action) => {
         searchValue: action.payload,
       };
 
+    case 'SIDEBAR_TOGGLE':
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
+      };
     default:
       return state;
   }

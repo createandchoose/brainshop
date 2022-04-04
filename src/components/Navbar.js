@@ -1,16 +1,18 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from 'context/cart-context';
 import { useAuth } from 'context/auth-context';
 import { SearchBar } from 'components/input/SearchBar';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useFilter } from 'context/filter-context';
+
 function Navbar() {
+  const { dispatch } = useFilter();
+
   const navigate = useNavigate();
   const location = useLocation();
   const { state } = useCart();
   const { auth, setAuth } = useAuth();
-
-  console.log(auth, ' - navbar');
+  const routeCheck = location.pathname === '/listing';
 
   const loginUserHandler = () => {
     navigate('/login');
@@ -27,9 +29,14 @@ function Navbar() {
     <header className="main-head ecom-navbar z-index-lg">
       <nav className="nav-component">
         <div className="logo-wrapper">
-          <span className="hamburger-icon">
-            <i className="fa fa-bars f-6 p-h-4"></i>
-          </span>
+          {routeCheck && (
+            <span className="hamburger-icon">
+              <i
+                onClick={() => dispatch({ type: 'SIDEBAR_TOGGLE' })}
+                className="fa fa-bars f-6 p-h-4"
+              ></i>
+            </span>
+          )}
           <Link to="/" className="heading-4 t-c-1">
             Brain Store
           </Link>

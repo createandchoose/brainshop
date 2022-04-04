@@ -12,6 +12,10 @@
   background: var(--grey-color);
 }
 
+.hamburger-icon {
+  display: none;
+}
+
 .badge.ecom-badge {
   width: 2rem;
   height: 2rem;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFilter } from 'context/filter-context';
 import { Radio } from 'components/input/Radio';
 import { RangeSlider } from './input/RangeSlider';
@@ -11,7 +10,11 @@ export default function Sidebar() {
     dispatch({ type: 'SORT_BY', payload: e.target.value });
 
   return (
-    <aside className="list__aside box-shadow-dark">
+    <aside
+      className={`list__aside ${
+        state.isMenuOpen ? 'aside-open' : ''
+      } box-shadow-dark`}
+    >
       <header className="list__aside-header p-4">
         <p className="f-8 f-bold">Filters</p>
         <p
