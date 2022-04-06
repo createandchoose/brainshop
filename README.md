@@ -31,7 +31,31 @@
 
 ---
 
+#### Get started
+
+1. **Clone the repo:**
+```bash
+  $ git clone https://github.com/lannisterrr/brainshop.git
+```
+2. **Switch to `development` branch:**
+```bash
+  $ cd brainshop
+  $ git checkout development
+```
+3. **Install required node modules:**
+```bash
+  $ npm install
+```
+4. **Start the dev server:**
+```bash
+  $ npm start
+```
+Open the `localhost` link in the browser.
+Happy hacking!
+
+---
+
 ## Preview
 
-![preview](./preview.gif)
+![BrainShop-ss](https://i.ibb.co/WkQwFFw/Screenshot-2022-04-06-161453.jpg)
 
