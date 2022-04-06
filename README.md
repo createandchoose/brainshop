@@ -1,3 +1,37 @@
-## E-Commerce Backend
+<div align="center">
+<h1 align="center">BrainShop</h1>
+<p align="center">Best Place to get Brain related merch</p>
 
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that you can focus on building Frontend.
+
+</div>
+
+## Features
+
+- User signup / login
+- Home page with all featured categories
+- Product listing page
+- Filters
+  - Price range
+  - Category
+  - Customer rating
+  - Availability
+- Wishlist management
+- Cart Management
+- Single Product Page
+- Search Feature 
+- Mobile responsiveness
+---
+
+## Built With
+
+- [React JS](https://reactjs.org/)
+- [CerebrumUI Component Library](https://cerebrumui.netlify.app/)
+- CSS
+- [React Router v6](https://reactrouter.com/)
+
+---
+
+## Preview
+
+![preview](./preview.gif)
+
