@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, useContext } from 'react';
+import { useReducer, createContext, useContext } from 'react';
 import { filterReducer, initialState } from 'context/filter-reducer';
 import {
   sortItems,
