@@ -9,6 +9,8 @@
 @import './Styles/loader.css';
 @import './Styles/wishlist.css';
 @import './Styles/login.css';
+@import 'Styles/ProductPage.css';
+
 @media screen and (max-width: 600px) {
   .badge-caption {
     display: none;
@@ -51,4 +53,30 @@
   .cart__order-summary {
     position: static;
   }
+
+  .product-card {
+    width: 36rem;
+    height: 69rem;
+    flex-direction: column;
+  }
+
+  .product-card .product-card__details {
+    position: relative;
+    left: 0;
+    min-width: 36rem;
+    height: auto;
+  }
+  .product-card__name {
+    font-size: 2rem;
+  }
+}
+
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.margin-reset {
+  margin: 0;
 }

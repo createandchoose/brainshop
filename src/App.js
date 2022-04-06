@@ -2,17 +2,17 @@ import './App.css';
 import { Navbar } from 'components';
 import MockmanEs from 'mockman-js';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Cart from './pages/Cart';
-import Wishlist from './pages/Wishlist';
-import Listing from './pages/Listing';
+import Home from 'pages/Home';
+import Login from 'pages/Login';
+import Cart from 'pages/Cart';
+import Wishlist from 'pages/Wishlist';
+import Listing from 'pages/Listing';
+import { ProductDetail } from 'pages/ProductDetail';
 import { PrivateRoute } from 'components/PrivateRoute';
 
 function App() {
   const location = useLocation();
-  const routeCheck =
-    location.pathname === '/login' || location.pathname === '/signup';
+  const routeCheck = location.pathname === '/login';
   return (
     <div className="App">
       {!routeCheck && <Navbar />}
@@ -37,6 +37,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/listing" element={<Listing />} />
+        <Route path="/product/:productId" element={<ProductDetail />} />
         <Route path="/mock" element={<MockmanEs />} />
       </Routes>
     </div>

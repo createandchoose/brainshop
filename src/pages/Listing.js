@@ -18,8 +18,8 @@ export default function Listing() {
       {/* Items */}
       <main className="list__content centered-row p-2">
         {filterData.map(item => (
-          <ProductItem key={item.id} item={item}>
-            {state.wishlist.find(i => i.id === item.id) ? (
+          <ProductItem key={item._id} item={item}>
+            {state.wishlist.find(i => i._id === item._id) ? (
               <i
                 onClick={() => removeFromWishlist(item._id, dispatch)}
                 className="far fa-heart f-8 p-4 fas"
