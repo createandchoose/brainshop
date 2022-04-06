@@ -39,6 +39,15 @@ function App() {
         <Route path="/listing" element={<Listing />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
         <Route path="/mock" element={<MockmanEs />} />
+
+        <Route
+          path="*"
+          element={
+            <main>
+              <p className="heading-3 t-c-3 p-4">There's nothing here!</p>
+            </main>
+          }
+        />
       </Routes>
     </div>
   );

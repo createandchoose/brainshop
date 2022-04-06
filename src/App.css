@@ -16,16 +16,25 @@
     display: none;
   }
 
-  .list__grid-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 10vh auto;
-    grid-template-areas:
-      'header'
-      'content';
+  .hamburger-icon {
+    display: inline;
   }
 
   .list__aside {
-    display: none;
+    z-index: 4;
+    background: var(--complimentary-bg-color);
+    color: var(--secondary-color);
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    transition: width 350ms ease-in-out;
+  }
+
+  .aside-open {
+    width: 73vw;
+    top: 8.8rem;
   }
 
   .nav-searchBar-container.ecom-searchbar {
