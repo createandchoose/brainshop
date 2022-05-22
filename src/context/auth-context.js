@@ -13,8 +13,6 @@ const initialState = {
   signUpLastName: '',
   signUpEmail: '',
   signUpPassword: '',
-  isAuth: false,
-  token: '',
 };
 
 const signInReducer = (state, action) => {
