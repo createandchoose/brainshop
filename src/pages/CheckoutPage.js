@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 import { useReducer, useState } from 'react';
-import { CartSummary, Modal, SummaryCard } from 'components';
+import { Modal, SummaryCard } from 'components';
 import { useCart } from 'context/cart-context';
 import { loadScript } from 'services/loadScript';
 import { useNavigate } from 'react-router-dom';
