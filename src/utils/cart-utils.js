@@ -15,6 +15,12 @@ const cartReducer = (state, action) => {
         }),
       };
     }
+
+    case 'CART_CLEAR':
+      return {
+        ...state,
+        cart: [],
+      };
     case 'DECREASE_COUNT':
       return {
         ...state,

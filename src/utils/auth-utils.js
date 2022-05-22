@@ -5,7 +5,6 @@ const logInHandler = async (email, password, setAuth, navigate) => {
   try {
     console.log(email, password);
     const token = await loginService(email, password);
-    console.log(token);
     localStorage.setItem('token', token);
     localStorage.setItem('isAuth', true);
     setAuth({ token, isAuth: true });

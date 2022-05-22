@@ -9,6 +9,7 @@ import Wishlist from 'pages/Wishlist';
 import Listing from 'pages/Listing';
 import { ProductDetail } from 'pages/ProductDetail';
 import { PrivateRoute } from 'components/PrivateRoute';
+import CheckoutPage from 'pages/CheckoutPage';
 
 function App() {
   const location = useLocation();
@@ -18,7 +19,7 @@ function App() {
       {!routeCheck && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route
           path="/wishlist"
           element={

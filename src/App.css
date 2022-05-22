@@ -10,6 +10,7 @@
 @import './Styles/wishlist.css';
 @import './Styles/login.css';
 @import 'Styles/ProductPage.css';
+@import 'Styles/checkout.css';
 
 @media screen and (max-width: 600px) {
   .badge-caption {

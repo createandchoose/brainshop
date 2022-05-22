@@ -10,14 +10,21 @@ function SignUp() {
 
   const formSubmitHandler = e => {
     e.preventDefault();
-    signUpHandler(
-      loginState.signUpEmail,
-      loginState.signUpPassword,
-      loginState.signUpFirstName,
-      loginState.signUpLastName,
-      setAuth,
-      navigate
-    );
+    const regex = new RegExp('[0-9]');
+    const res = regex.test(loginState.signUpPassword);
+
+    if (loginState.signUpPassword.length > 8 && res) {
+      signUpHandler(
+        loginState.signUpEmail,
+        loginState.signUpPassword,
+        loginState.signUpFirstName,
+        loginState.signUpLastName,
+        setAuth,
+        navigate
+      );
+    } else {
+      alert('password too small');
+    }
   };
 
   return (
