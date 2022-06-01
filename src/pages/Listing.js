@@ -4,8 +4,9 @@ import { BigLoader } from 'components/Loader';
 import { useCart } from 'context/cart-context';
 import { useFilter } from 'context/filter-context';
 import { addToWishlist, removeFromWishlist } from 'utils/wishlist-utils';
-
+import { useAuth } from 'context/auth-context';
 export default function Listing() {
+  const { auth } = useAuth();
   const { products, loading } = useProduct();
   const { state, dispatch } = useCart();
   const { filterData } = useFilter();
@@ -21,12 +22,14 @@ export default function Listing() {
           <ProductItem key={item._id} item={item}>
             {state.wishlist.find(i => i._id === item._id) ? (
               <i
-                onClick={() => removeFromWishlist(item._id, dispatch)}
+                onClick={() =>
+                  removeFromWishlist(item._id, dispatch, auth.token)
+                }
                 className="far fa-heart f-8 p-4 fas"
               ></i>
             ) : (
               <i
-                onClick={() => addToWishlist(item, dispatch)}
+                onClick={() => addToWishlist(item, dispatch, auth.token)}
                 className="far fa-heart f-8 p-4"
               ></i>
             )}
