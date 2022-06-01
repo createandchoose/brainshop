@@ -1,12 +1,14 @@
 import { loginService } from 'services/login-service';
 import { signupService } from 'services/signup-service';
-const logInHandler = async (email, password, setAuth, navigate) => {
+const logInHandler = async (email, password, setAuth, navigate, location) => {
   try {
+    console.log(location);
+    const from = location.state?.from?.pathname || '/';
     const token = await loginService(email, password);
     localStorage.setItem('token', token);
     localStorage.setItem('isAuth', true);
     setAuth({ token, isAuth: true });
-    navigate('/');
+    navigate(from);
   } catch (e) {
     console.log(e);
   }

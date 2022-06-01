@@ -17,6 +17,18 @@ const initialState = {
 
 const signInReducer = (state, action) => {
   switch (action.type) {
+    case 'RESET_FORM':
+      return {
+        ...state,
+        showPassword: false,
+        email: '',
+        password: '',
+        rememberMe: false,
+        signUpFirstName: '',
+        signUpLastName: '',
+        signUpEmail: '',
+        signUpPassword: '',
+      };
     case 'TEXT_INPUT':
       return {
         ...state,

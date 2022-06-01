@@ -1,13 +1,22 @@
 import { Checkbox } from 'components/input/Checkbox';
 import { useAuth } from 'context/auth-context';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function SignIn() {
-  const { loginState, dispatch, logInHandler, setAuth, auth } = useAuth();
+  const { loginState, dispatch, logInHandler, setAuth } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const logInFormHandler = e => {
     e.preventDefault();
-    logInHandler(loginState.email, loginState.password, setAuth, navigate);
+    logInHandler(
+      loginState.email,
+      loginState.password,
+      setAuth,
+      navigate,
+      location
+    );
+
+    dispatch({ type: 'RESET_FORM' });
   };
 
   return (
