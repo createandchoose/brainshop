@@ -20,7 +20,7 @@ const addToWishlist = async (product, dispatch, token) => {
   }
 };
 
-const removeFromWishlist = async (productId, dispatch) => {
+const removeFromWishlist = async (productId, dispatch, token) => {
   try {
     const response = await axios.delete(`/api/user/wishlist/${productId}`, {
       headers: {

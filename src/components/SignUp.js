@@ -97,33 +97,13 @@ function SignUp() {
             required
           />
           <i class="uil uil-lock form-icon left-icon"></i>
-        </div>
-
-        {/* <div class="input-field">
-          <input
-            value={loginState.signUpConfirmPassword}
-            onChange={event =>
-              dispatch({
-                type: 'TEXT_INPUT',
-                payload: {
-                  key: 'signUpConfirmPassword',
-                  value: event.target.value,
-                },
-              })
-            }
-            type={loginState.showPassword ? 'text' : 'password'}
-            placeholder="Confirm password"
-            class="form__email-input password"
-            required
-          />
-          <i class="uil uil-lock form-icon left-icon"></i>
           <i
             onClick={() => dispatch({ type: 'PASSWORD_SHOW' })}
             class={`uil uil-eye${
               loginState.showPassword ? '' : '-slash'
             }  form-icon showHidePw`}
           ></i>
-        </div> */}
+        </div>
 
         <div class="checkbox-container">
           <div class="checkbox-content">

@@ -1,8 +1,10 @@
 import { useCart } from 'context/cart-context';
 import { useNavigate } from 'react-router-dom';
 import { addToWishlist } from 'utils/wishlist-utils';
+import { useAuth } from 'context/auth-context';
 
 function ProductPage({ item }) {
+  const { auth } = useAuth();
   let navigate = useNavigate();
   const { state, dispatch } = useCart();
   const {
@@ -111,7 +113,7 @@ function ProductPage({ item }) {
             </button>
           ) : (
             <button
-              onClick={() => addToWishlist(item, dispatch)}
+              onClick={() => addToWishlist(item, dispatch, auth.token)}
               className="btn btn-primary m-h-3 t-c-1"
             >
               Move to wishlist

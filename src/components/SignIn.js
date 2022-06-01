@@ -69,9 +69,6 @@ function SignIn() {
               name="login-checkbox"
             />
           </div>
-          <a href="#" class="t-c-3 f-6 f-bold forget-password">
-            Forget Password?
-          </a>
         </div>
 
         <div class="input-field button-container">

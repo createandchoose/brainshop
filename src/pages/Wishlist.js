@@ -40,7 +40,9 @@ export default function Wishlist() {
             {state.wishlist.map(item => (
               <ProductItem key={item.id} item={item}>
                 <i
-                  onClick={() => removeFromWishlist(item._id, dispatch)}
+                  onClick={() =>
+                    removeFromWishlist(item._id, dispatch, auth.token)
+                  }
                   className="fas fa-times f-8 p-4"
                 ></i>
               </ProductItem>
