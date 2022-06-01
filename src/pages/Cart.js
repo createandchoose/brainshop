@@ -3,11 +3,15 @@ import React from 'react';
 import { CartItem, EmptyCart, CartSummary } from 'components';
 
 import { useCart } from 'context/cart-context';
+import { Helmet } from 'react-helmet';
 
 export default function Cart() {
   const { state } = useCart();
   return (
     <>
+      <Helmet>
+        <title>Cart</title>
+      </Helmet>
       {state.cart.length === 0 ? (
         <EmptyCart>cart</EmptyCart>
       ) : (

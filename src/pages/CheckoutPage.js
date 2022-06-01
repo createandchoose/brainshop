@@ -5,6 +5,7 @@ import { Modal, SummaryCard } from 'components';
 import { useCart } from 'context/cart-context';
 import { loadScript } from 'services/loadScript';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const initialState = {
   address: [
@@ -139,6 +140,9 @@ function CheckoutPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Checkout</title>
+      </Helmet>
       <div class="checkout__grid-container">
         <div className="address">
           <p className="heading-3 p-h-4">Choose Your Adress Here</p>

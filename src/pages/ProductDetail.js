@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useProduct } from 'context/products-context';
 import { ProductPage } from 'components/ProductPage';
+import { EmptyCart } from 'components';
 
 function ProductDetail() {
   const { productId } = useParams();
@@ -11,10 +12,13 @@ function ProductDetail() {
   }
 
   const specificproduct = getProductDetails(products, productId);
-  console.log(specificproduct);
   return (
     <div className="product-page-wrapper center-flex">
-      <ProductPage item={specificproduct} />
+      {specificproduct ? (
+        <ProductPage item={specificproduct} />
+      ) : (
+        <EmptyCart>Product</EmptyCart>
+      )}
     </div>
   );
 }

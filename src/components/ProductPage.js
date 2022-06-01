@@ -2,6 +2,7 @@ import { useCart } from 'context/cart-context';
 import { useNavigate } from 'react-router-dom';
 import { addToWishlist } from 'utils/wishlist-utils';
 import { useAuth } from 'context/auth-context';
+import { EmptyCart } from './EmptyCart';
 
 function ProductPage({ item }) {
   const { auth } = useAuth();
@@ -18,6 +19,8 @@ function ProductPage({ item }) {
     rating,
     seller,
   } = item;
+
+  console.log(item);
 
   return (
     <main className="product-card box-shadow-light ">
