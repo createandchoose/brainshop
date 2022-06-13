@@ -10,12 +10,19 @@ import Listing from 'pages/Listing';
 import { ProductDetail } from 'pages/ProductDetail';
 import { PrivateRoute } from 'components/PrivateRoute';
 import CheckoutPage from 'pages/CheckoutPage';
+import { Helmet } from 'react-helmet';
 
 function App() {
   const location = useLocation();
   const routeCheck = location.pathname === '/login';
   return (
     <div className="App">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>BrainShop</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+        <meta name="description" content="Ecommerce" />
+      </Helmet>
       {!routeCheck && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />

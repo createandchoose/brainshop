@@ -4,6 +4,7 @@ import { ProductItem } from 'components';
 import { useAuth } from 'context/auth-context';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import { removeFromWishlist } from 'utils/wishlist-utils';
 
@@ -29,6 +30,9 @@ export default function Wishlist() {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>Wishlist</title>
+      </Helmet>
       {state.wishlist.length === 0 ? (
         <EmptyCart>wishlist</EmptyCart>
       ) : (
@@ -40,7 +44,9 @@ export default function Wishlist() {
             {state.wishlist.map(item => (
               <ProductItem key={item.id} item={item}>
                 <i
-                  onClick={() => removeFromWishlist(item._id, dispatch)}
+                  onClick={() =>
+                    removeFromWishlist(item._id, dispatch, auth.token)
+                  }
                   className="fas fa-times f-8 p-4"
                 ></i>
               </ProductItem>

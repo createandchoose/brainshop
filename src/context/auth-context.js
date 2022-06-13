@@ -17,6 +17,18 @@ const initialState = {
 
 const signInReducer = (state, action) => {
   switch (action.type) {
+    case 'RESET_FORM':
+      return {
+        ...state,
+        showPassword: false,
+        email: '',
+        password: '',
+        rememberMe: false,
+        signUpFirstName: '',
+        signUpLastName: '',
+        signUpEmail: '',
+        signUpPassword: '',
+      };
     case 'TEXT_INPUT':
       return {
         ...state,
@@ -47,8 +59,8 @@ const signInReducer = (state, action) => {
     case 'FILL_GUEST':
       return {
         ...state,
-        email: 'adarshbalika@gmail.com',
-        password: 'adarshBalika123',
+        email: 'johndoe@gmail.com',
+        password: 'johnDoe123',
       };
 
     default:

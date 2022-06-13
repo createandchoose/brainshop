@@ -1,13 +1,22 @@
 import { Checkbox } from 'components/input/Checkbox';
 import { useAuth } from 'context/auth-context';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function SignIn() {
-  const { loginState, dispatch, logInHandler, setAuth, auth } = useAuth();
+  const { loginState, dispatch, logInHandler, setAuth } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const logInFormHandler = e => {
     e.preventDefault();
-    logInHandler(loginState.email, loginState.password, setAuth, navigate);
+    logInHandler(
+      loginState.email,
+      loginState.password,
+      setAuth,
+      navigate,
+      location
+    );
+
+    dispatch({ type: 'RESET_FORM' });
   };
 
   return (
@@ -69,9 +78,6 @@ function SignIn() {
               name="login-checkbox"
             />
           </div>
-          <a href="#" class="t-c-3 f-6 f-bold forget-password">
-            Forget Password?
-          </a>
         </div>
 
         <div class="input-field button-container">
