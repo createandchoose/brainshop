@@ -89,9 +89,6 @@ function CheckoutPage() {
   };
 
   const handleRadioChange = (e, item) => {
-    console.log(e);
-    console.log(item);
-
     dispatch({
       type: 'TOGGLE_CHECKED',
       payload: e.target.name,
@@ -107,7 +104,6 @@ function CheckoutPage() {
   };
 
   const displayRazorpay = async () => {
-    console.log(cartTotalPrice);
     const res = await loadScript(
       'https://checkout.razorpay.com/v1/checkout.js'
     );
@@ -126,7 +122,9 @@ function CheckoutPage() {
       handler: function (response) {
         console.log(response);
         cartDispatch({ type: 'CART_CLEAR' });
-        alert('paymet Successful');
+        alert(
+          `Payment SuccessFull with paymentId : ${response.razorpay_payment_id}`
+        );
         navigate('/');
       },
       prefill: {

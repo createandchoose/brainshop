@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useFilter } from 'context/filter-context';
+
+function debounce(cb, delay) {
+  let timer;
+  return (...args) => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      cb(...args);
+    }, delay);
+  };
+}
 
 function SearchBar() {
   const { state, dispatch } = useFilter();
+
+  const inputRef = useRef('');
+
+  function handleInputChange(e) {
+    console.log(e.target);
+    dispatch({ type: 'SEARCH', payload: inputRef.current.value });
+  }
+
+  console.log('rendered');
+  console.log(state.searchValue);
+
+  const runWithDebounce = useCallback(debounce(handleInputChange, 1000), []);
+
   return (
     <div className="nav-searchBar-container ecom-searchbar">
       <span className="nav-searchIcon">
@@ -12,12 +35,15 @@ function SearchBar() {
         type="text"
         className="p-v-3 nav-searchBar"
         placeholder="Search Items..."
-        value={state.searchValue}
-        onChange={e => dispatch({ type: 'SEARCH', payload: e.target.value })}
+        ref={inputRef}
+        onChange={runWithDebounce}
       />
       <span
         className="nav-clearIcon"
-        onClick={() => dispatch({ type: 'CLEAR' })}
+        onClick={() => {
+          inputRef.current.value = '';
+          dispatch({ type: 'CLEAR' });
+        }}
       >
         <i className="fas fa-times f-7 t-c-2"></i>
       </span>
